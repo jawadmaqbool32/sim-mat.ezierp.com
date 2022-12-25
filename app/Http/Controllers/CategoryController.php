@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Core\Helper;
-use app\Http\Datatables\CategoryDatatable;
+use App\Http\Datatables\CategoryDatatable;
 use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
@@ -26,12 +26,12 @@ class CategoryController extends Controller
     {
         $this->thumbWidth = 200;
         $this->thumbHeight = 200;
-        $this->dataTable = new CategoryDatatable();
     }
 
     public function index(Request $request)
     {
         if ($request->ajax()) {
+            $this->dataTable = new CategoryDatatable();
             return $this->dataTable->getData();
         }
         return view('categories.index');
