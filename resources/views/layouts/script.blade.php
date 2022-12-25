@@ -10,7 +10,7 @@
 
 <script>
     $(document).ready(function() {
-        
+
         function formatAMPM(date) {
             var hours = date.getHours();
             var minutes = date.getMinutes();
@@ -31,8 +31,9 @@
             targetElement.find('.toast-time').html(settings.time);
             targetElement.find('.toast-body').html(settings.body);
             targetElement.find('.svg-icon').html(settings.icon);
+            targetElement.find('.toast').removeAttr("class").addClass('toast bg-' + settings.type);
             targetElement = document.querySelector(
-                '[data-kt-docs-toast="stack"]'); // Use CSS class or HTML attr to avoid duplicating ids
+                '[data-kt-docs-toast="stack"]');
             targetElement.parentNode.removeChild(targetElement);
             const newToast = targetElement.cloneNode(true);
             container.append(newToast);
@@ -42,9 +43,9 @@
 
         $(document).on('submit', 'form', function(e) {
             if ($(this).data('ajax')) {
+                e.preventDefault();
                 var selector = $(this).find('button[type="submit"]');
                 selector.attr('disabled', true);
-                e.preventDefault();
                 let url = $(this).prop('action');
                 let method = $(this).prop('method') ?? 'GET';
                 let _token = "{{ csrf_token() }}"
@@ -66,6 +67,7 @@
                         if (response.success) {
                             toast({
                                 title: "Success",
+                                type: "success",
                                 time: cTime,
                                 body: response.message,
                                 icon: "<i class='bi bi-check2-square fs-2x text-success'></i>"
@@ -85,6 +87,7 @@
                     error: function(response) {
                         toast({
                             title: "Failed",
+                            type: "danger",
                             time: cTime,
                             body: response.message,
                             icon: "<i class='bi bi-x fs-2x text-danger'></i>"
@@ -101,8 +104,12 @@
 
             var attributes = $(this).data();
             let modal = $($(this).data('bsTarget'));
+            let url = $(this).data('baseUrl');
             let currentURL = modal.find('form').data('baseUrl');
-            modal.find('form').attr('action', currentURL + $(this).data('modal_id'))
+            if (!url) {
+                url = currentURL + $(this).data('modal_id');
+            }
+            modal.find('form').attr('action', url);
             for (const key in attributes) {
                 if (Object.hasOwnProperty.call(attributes, key)) {
                     const element = attributes[key];

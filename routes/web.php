@@ -30,5 +30,8 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         })->name('dashboard');
         Route::resource('categories', CategoryController::class);
         Route::resource('products', ProductController::class);
+        Route::resource('users', UserController::class);
+        Route::resource('roles', RoleController::class);
+        Route::resource('permissions', PermissionController::class);
     });
 });
