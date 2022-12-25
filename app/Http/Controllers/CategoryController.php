@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            return Category::getDataTable();
+            return Category::dataTable();
         }
         return view('categories.index');
     }

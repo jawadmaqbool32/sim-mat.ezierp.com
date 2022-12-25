@@ -17,7 +17,7 @@ class Product extends UIDModel
 
 
 
-    public function scopeGetDataTable($query)
+    public function scopeDataTable($query)
     {
         $products = $query;
         return DataTables::of($products)

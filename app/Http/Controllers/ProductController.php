@@ -34,7 +34,7 @@ class ProductController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            return Product::getDataTable();
+            return Product::dataTable();
         }
         return view('products.index');
     }
