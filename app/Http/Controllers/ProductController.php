@@ -23,20 +23,18 @@ class ProductController extends Controller
      */
 
 
-    private $dataTable;
     private $thumbWidth;
     private $thumbHeight;
     public function __construct()
     {
         $this->thumbWidth = 200;
         $this->thumbHeight = 200;
-        $this->dataTable = new ProductDatatable();
     }
 
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            return $this->dataTable->getData();
+            return Product::getDataTable();
         }
         return view('products.index');
     }
