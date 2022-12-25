@@ -10,7 +10,7 @@
 
 <script>
     $(document).ready(function() {
-            
+        
         function formatAMPM(date) {
             var hours = date.getHours();
             var minutes = date.getMinutes();
@@ -50,7 +50,7 @@
                 let _token = "{{ csrf_token() }}"
                 var formData = new FormData($(this)[0]);
                 formData.append('_token', _token);
-                $(this).find('.quill-input').each(function(){
+                $(this).find('.quill-input').each(function() {
                     let name = $(this).data('name');
                     let description = $(this).find('.ql-editor').html();
                     formData.append(name, description);

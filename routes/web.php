@@ -20,6 +20,10 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         'uses' => "LoginController@index",
         'as' => 'login'
     ]);
+    Route::post('logout', [
+        'uses' => "LoginController@logout",
+        'as' => 'logout'
+    ]);
     Route::group(['middleware' => ['auth']], function () {
         Route::get('/', function () {
             return view('dashboard');
