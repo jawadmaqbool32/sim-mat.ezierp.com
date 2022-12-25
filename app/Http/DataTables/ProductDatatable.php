@@ -2,7 +2,6 @@
 
 namespace App\Http\Datatables;
 
-use App\Models\Category;
 use App\Models\Product;
 use Yajra\DataTables\DataTables;
 
