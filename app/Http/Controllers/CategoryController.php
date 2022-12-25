@@ -8,8 +8,6 @@ use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
-use Intervention\Image\ImageManagerStatic as Image;
 
 
 class CategoryController extends Controller
