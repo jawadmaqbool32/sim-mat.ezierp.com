@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Core\Helper;
-use App\Http\Datatables\CategoryDatatable;
+use app\Http\Datatables\CategoryDatatable;
 use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
