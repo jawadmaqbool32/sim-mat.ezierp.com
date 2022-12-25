@@ -38,8 +38,8 @@ class Product extends UIDModel
                     $color = 'btn-success';
                 } elseif ($product->status == 'unpublished') {
                     $color = 'btn-warning';
-                    $text = $text . ' (' . date('d M, Y h:i A', strtotime($product->published_date)) . ')';
                 } else {
+                    $text = $text . ' (' . date('d M, Y h:i A', strtotime($product->published_date)) . ')';
                     $color = 'btn-danger';
                 }
                 return '<button class="btn btn-sm ' . $color . '">' . $text . '</button>';
