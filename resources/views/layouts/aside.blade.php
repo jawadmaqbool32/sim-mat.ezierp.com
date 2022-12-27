@@ -3,8 +3,9 @@
     data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
         <a href="../index.html">
-            <img alt="Logo" src="{{asset('assets/media/logos/default-dark.svg')}}" class="h-25px app-sidebar-logo-default" />
-            <img alt="Logo" src="{{asset('assets/media/logos/default-small.svg')}}"
+            <img alt="Logo" src="{{ asset('assets/media/logos/default-dark.svg') }}"
+                class="h-25px app-sidebar-logo-default" />
+            <img alt="Logo" src="{{ asset('assets/media/logos/default-small.svg') }}"
                 class="h-20px app-sidebar-logo-minimize" />
         </a>
         <div id="kt_app_sidebar_toggle"
@@ -51,43 +52,59 @@
                             <span class="menu-title">Dashboards</span>
                         </span></a>
                 </div>
-                <div class="menu-item pt-5">
-                    <div class="menu-content">
-                        <span class="menu-heading fw-bold text-uppercase fs-7">Pages</span>
-                    </div>
-                </div>
-                <div data-kt-menu-trigger="click" class="menu-item menu-accordion">
-                    <span class="menu-link">
-                        <span class="menu-icon">
-                            <span class="svg-icon svg-icon-2">
-                                <i class="bi bi-shop fs-4"></i>
-                            </span>
-                        </span>
-                        <span class="menu-title">Inventory</span>
-                        <span class="menu-arrow"></span>
-                    </span>
-                    <div class="menu-sub menu-sub-accordion">
-                        <div class="menu-item">
-                            <a class="menu-link" href="{{route('categories.index')}}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Categoriess</span>
-                            </a>
-                        </div>
-                        <div class="menu-item">
-                            <a class="menu-link" href="{{route('products.index')}}">
-                                <span class="menu-bullet">
-                                    <span class="bullet bullet-dot"></span>
-                                </span>
-                                <span class="menu-title">Products</span>
-                            </a>
-                        </div>
-
-
-                    </div>
-                </div>
-                
+                @php
+                    $menu = [
+                        [
+                            'title' => 'Pages',
+                            'categories' => [
+                                [
+                                    'name' => 'Inventory',
+                                    'icon' => 'bi bi-shop',
+                                    'links' => [
+                                        [
+                                            'title' => 'Categories',
+                                            'permission' => 'view category',
+                                            'link' => route('categories.index'),
+                                        ],
+                                        [
+                                            'title' => 'Products',
+                                            'permission' => 'view product',
+                                            'link' => route('products.index'),
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'name' => 'Access Control',
+                                    'icon' => 'bi bi-lock',
+                                    'links' => [
+                                        [
+                                            'title' => 'Roles',
+                                            'permission' => 'view roles',
+                                            'link' => route('roles.index'),
+                                        ],
+                                        [
+                                            'title' => 'Permissions',
+                                            'permission' => 'view permission',
+                                            'link' => route('permissions.index'),
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'name' => 'Users',
+                                    'icon' => 'bi bi-people',
+                                    'links' => [
+                                        [
+                                            'title' => 'User',
+                                            'permission' => 'view user',
+                                            'link' => route('users.index'),
+                                        ],
+                                    ],
+                                ],
+                            ],
+                        ],
+                    ];
+                @endphp
+                <x-aside-menu-links :links="$menu" />
             </div>
         </div>
     </div>

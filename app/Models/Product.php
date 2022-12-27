@@ -46,7 +46,7 @@ class Product extends UIDModel
             })
             ->addColumn('action', function ($product) {
                 $btns = [];
-                if (auth()->user()->hasPermission('edit-product')) {
+                if (auth()->user()->hasPermission('edit product')) {
                     $btns[] = '<a href="' . route('products.edit', $product->uid) . '"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                     <span class="svg-icon svg-icon-3">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -56,7 +56,7 @@ class Product extends UIDModel
                     </span>
                 </a>';
                 }
-                if (auth()->user()->hasPermission('delete-product')) {
+                if (auth()->user()->hasPermission('delete product')) {
                     $btns[] = '<a href="#" data-bs-target="#delete_modal" data-bs-toggle="modal" data-modal_id="' . $product->uid . '" data-modal_name="' . $product->name . '" data-modal_title="Delete ' . $product->name . '?" class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
                     <span class="svg-icon svg-icon-3">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

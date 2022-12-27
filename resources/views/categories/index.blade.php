@@ -6,6 +6,12 @@
                 <span class="card-label fw-bold fs-3 mb-1">Product Categories</span>
             </h3>
             <div class="row">
+                <div class="col-md-12">
+                    <x-breadcrums :links="[
+                        'Home' => route('dashboard'),
+                        'Categories' => false,
+                    ]" />
+                </div>
                 <div class="col-md-4">
                     <div class="d-flex align-items-center position-relative my-1 mb-2 mb-md-0">
                         <span class="svg-icon svg-icon-1 position-absolute ms-6">
@@ -58,9 +64,9 @@
                     </div>
                     <div class="separator mb-3 opacity-75"></div>
                     <div class="menu-item px-3 mb-3">
-                        @if (auth()->user()->hasPermission('create-category'))
+                        @can('create category')
                             <a href="{{ route('categories.create') }}" class="menu-link px-3">New Category</a>
-                        @endif
+                        @endcan
                     </div>
 
                 </div>

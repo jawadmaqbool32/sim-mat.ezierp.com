@@ -35,7 +35,7 @@ class Role extends UIDModel
             })
             ->addColumn('action', function ($role) {
                 $btns = [];
-                if (auth()->user()->hasPermission('edit-role')) {
+                if (auth()->user()->hasPermission('edit role')) {
                     $btns[] = '<a href="' . route('roles.edit', $role->uid) . '"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                     <span class="svg-icon svg-icon-3">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -45,7 +45,7 @@ class Role extends UIDModel
                     </span>
                 </a>';
                 }
-                if (auth()->user()->hasPermission('delete-role')) {
+                if (auth()->user()->hasPermission('delete role')) {
                     $btns[] = '<a href="#" data-bs-target="#delete_modal" data-bs-toggle="modal" data-modal_id="' . $role->uid . '" data-modal_name="' . $role->name . '" data-modal_title="Delete ' . $role->name . '?" class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
                     <span class="svg-icon svg-icon-3">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">

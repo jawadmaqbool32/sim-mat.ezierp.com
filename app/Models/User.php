@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Core\Helper;
+use App\Http\Traits\RoleTrait;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -11,7 +12,7 @@ use Yajra\DataTables\Facades\DataTables;
 
 class User extends Authenticatable
 {
-    use HasApiTokens, HasFactory, Notifiable;
+    use HasApiTokens, HasFactory, Notifiable, RoleTrait;
     protected $primaryKey = 'uid';
     public $incrementing = false;
     protected static function boot()
@@ -36,7 +37,7 @@ class User extends Authenticatable
 
     public function scopeDataTable($query)
     {
-        $users = $query;
+        $users = $query->with('role');
         return DataTables::of($users)
             ->addIndexColumn()
             ->editColumn('image', function ($user) {
@@ -51,18 +52,23 @@ class User extends Authenticatable
             })
             ->editColumn('status', function ($user) {
                 $text = ucwords($user->status);
-                if ($user->status == 'published') {
+                if ($user->status == 'active') {
                     $color = 'btn-success';
-                } elseif ($user->status == 'unpublished') {
-                    $color = 'btn-warning';
                 } else {
                     $color = 'btn-danger';
                 }
                 return '<button class="btn btn-sm ' . $color . '">' . $text . '</button>';
             })
+            ->editColumn('role', function ($user) {
+                if ($user->role == false) {
+                    return 'No Role--';
+                } else {
+                    return ucwords($user->role->name);
+                }
+            })
             ->addColumn('action', function ($user) {
                 $btns = [];
-                if (auth()->user()->hasPermission('edit-user')) {
+                if (auth()->user()->hasPermission('edit user')) {
                     $btns[] = '<a href="' . route('users.edit', $user->uid) . '"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm me-1">
                     <span class="svg-icon svg-icon-3">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -72,7 +78,7 @@ class User extends Authenticatable
                     </span>
                 </a>';
                 }
-                if (auth()->user()->hasPermission('delete-user')) {
+                if (auth()->user()->hasPermission('delete user')) {
                     $btns[] = '<a href="#" data-bs-target="#delete_modal" data-bs-toggle="modal" data-modal_id="' . $user->uid . '" data-modal_name="' . $user->name . '" data-modal_title="Delete ' . $user->name . '?" class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
                     <span class="svg-icon svg-icon-3">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -89,7 +95,7 @@ class User extends Authenticatable
                     return null;
                 }
             })
-            ->rawColumns(['action', 'thumbnail', 'status'])
+            ->rawColumns(['action', 'image', 'status'])
             ->make(true);
     }
 
@@ -100,11 +106,7 @@ class User extends Authenticatable
      *
      * @var array<int, string>
      */
-    protected $fillable = [
-        'name',
-        'email',
-        'password',
-    ];
+    protected $guarded = ['id'];
 
     /**
      * The attributes that should be hidden for serialization.
@@ -124,8 +126,4 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
-    public function hasPermission($permission)
-    {
-        return true;
-    }
 }

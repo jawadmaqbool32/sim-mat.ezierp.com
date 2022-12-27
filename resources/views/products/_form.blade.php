@@ -104,19 +104,19 @@
                 @endforeach
             </select>
             <div class="text-muted fs-7 mb-7">Add product to a category.</div>
-            @if (auth()->user()->hasPermission('create-category'))
+            @can('create-category')
                 <a href="{{ route('categories.create') }}" class="btn btn-light-primary btn-sm mb-10">
                     <span class="svg-icon svg-icon-2">
                         <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                             xmlns="http://www.w3.org/2000/svg">
-                            <rect opacity="0.5" x="11" y="18" width="12" height="2"
-                                rx="1" transform="rotate(-90 11 18)" fill="currentColor"></rect>
+                            <rect opacity="0.5" x="11" y="18" width="12" height="2" rx="1"
+                                transform="rotate(-90 11 18)" fill="currentColor"></rect>
                             <rect x="6" y="11" width="12" height="2" rx="1"
                                 fill="currentColor"></rect>
                         </svg>
                     </span>
                     Create new category</a>
-            @endif
+            @endcan
             <label class="form-label d-block">Tags</label>
             <input class="form-control" value="{{ @$product->tags }}" id="input_tag" name="tags" />
             <div class="text-muted fs-7">Add tags to a product.</div>

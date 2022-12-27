@@ -125,7 +125,7 @@ class RoleController extends Controller
             ]);
 
 
-           Role::where('id', $role->id)->update([
+            Role::where('id', $role->id)->update([
                 'name' => $request->name,
                 'status' => $request->status
             ]);

@@ -61,7 +61,7 @@
                         <div class="form-check form-switch form-check-custom form-check-solid">
                             <input name="permissions[]" class="form-check-input" type="checkbox" value="{{$permission->uid}}"
                                 id="flexSwitchChecked{{ $permission->id }}"
-                                @if (@$role && $role->hasPermission(@$permission->name)) checked="checked"  @endif />
+                                @can(@$permission->name) checked="checked"  @endcan />
                             <label class="form-check-label" for="flexSwitchChecked{{ $permission->id }}">
                                 {{ $permission->name }}
                             </label>

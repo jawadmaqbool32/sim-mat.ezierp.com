@@ -17,6 +17,7 @@ class LoginController extends Controller
             if (Auth::attempt([
                 'email' => $request->email,
                 'password' => $request->password,
+                'status' => 'active',
             ])) {
                 if ($request->ajax()) {
                     $response = response(['success' => true, 'reload' => true, 'message' => "Login Success"]);

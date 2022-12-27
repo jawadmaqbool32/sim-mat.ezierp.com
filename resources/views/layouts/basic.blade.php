@@ -71,7 +71,7 @@
             <div class="app-wrapper flex-column flex-row-fluid" id="kt_app_wrapper">
                 @include('layouts.aside')
                 <div class="app-main flex-column flex-row-fluid" id="kt_app_main">
-                    <div id="kt_app_content_container" class="app-container container-xxl pt-4">
+                    <div id="kt_app_content_container" class="app-container container-xxl p-0 pt-4">
                         @yield('content')
                     </div>
                     <div id="kt_app_footer" class="app-footer">

@@ -22,24 +22,7 @@
             return strTime;
         }
 
-        const current = new Date();
-        const cTime = formatAMPM(current);
-        const toast = (settings) => {
-            const container = document.getElementById('kt_docs_toast_stack_container');
-            let targetElement = $('#kt_docs_toast_stack_container');
-            targetElement.find('.toast-title').html(settings.title);
-            targetElement.find('.toast-time').html(settings.time);
-            targetElement.find('.toast-body').html(settings.body);
-            targetElement.find('.svg-icon').html(settings.icon);
-            targetElement.find('.toast').removeAttr("class").addClass('toast bg-' + settings.type);
-            targetElement = document.querySelector(
-                '[data-kt-docs-toast="stack"]');
-            targetElement.parentNode.removeChild(targetElement);
-            const newToast = targetElement.cloneNode(true);
-            container.append(newToast);
-            const toast = bootstrap.Toast.getOrCreateInstance(newToast);
-            toast.show();
-        }
+
 
         $(document).on('submit', 'form', function(e) {
             if ($(this).data('ajax')) {
@@ -65,13 +48,16 @@
                     contentType: false,
                     success: function(response) {
                         if (response.success) {
-                            toast({
-                                title: "Success",
-                                type: "success",
-                                time: cTime,
-                                body: response.message,
-                                icon: "<i class='bi bi-check2-square fs-2x text-success'></i>"
-                            });
+
+                            toastr.success(
+                                response.message,
+                                "Reset Preview!", {
+                                    timeOut: 5000,
+                                    extendedTimeOut: 0,
+                                    closeButton: true,
+                                    closeDuration: 0
+                                }
+                            );
                         }
                         if (response.reload) {
                             window.location.reload();
@@ -85,13 +71,15 @@
                         }
                     },
                     error: function(response) {
-                        toast({
-                            title: "Failed",
-                            type: "danger",
-                            time: cTime,
-                            body: response.message,
-                            icon: "<i class='bi bi-x fs-2x text-danger'></i>"
-                        });
+                        toastr.error(
+                            response.message,
+                            "Reset Preview!", {
+                                timeOut: 5000,
+                                extendedTimeOut: 0,
+                                closeButton: true,
+                                closeDuration: 0
+                            }
+                        );
                     },
                     complete: function() {
                         selector.removeAttr('disabled');
@@ -117,7 +105,5 @@
                 }
             }
         });
-
-
     });
 </script>

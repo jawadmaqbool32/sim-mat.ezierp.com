@@ -2,7 +2,7 @@
     <div class="card card-flush py-4">
         <div class="card-header">
             <div class="card-title">
-                <h2>Thumbnail</h2>
+                <h2>Avatar</h2>
             </div>
         </div>
         <div class="card-body text-center pt-0">
@@ -18,12 +18,12 @@
             <div class="image-input image-input-empty image-input-outline image-input-placeholder mb-3"
                 data-kt-image-input="true">
                 <div class="image-input-wrapper w-150px h-150px"
-                    style="background-image: url('{{ @$product ? asset('/assets/media/products/thumbs/') . '/' . $product->thumbnail : '' }}')">
+                    style="background-image: url('{{ @$user ? asset('assets/media/users/profile/') . '/' . $user->image : '' }}')">
                 </div>
                 <label class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
                     data-kt-image-input-action="change" data-bs-toggle="tooltip" title="Change avatar">
                     <i class="bi bi-pencil-fill fs-7"></i>
-                    <input type="file" name="thumbnail" accept=".png, .jpg, .jpeg" />
+                    <input type="file" name="image" accept=".png, .jpg, .jpeg" />
                     <input type="hidden" name="avatar_remove" />
                 </label>
                 <span class="btn btn-icon btn-circle btn-active-color-primary w-25px h-25px bg-body shadow"
@@ -35,7 +35,7 @@
                     <i class="bi bi-x fs-2"></i>
                 </span>
             </div>
-            <div class="text-muted fs-7">Set the category thumbnail image. Only *.png, *.jpg and *.jpeg
+            <div class="text-muted fs-7">Set the user profile image. Only *.png, *.jpg and *.jpeg
                 image files are accepted</div>
         </div>
     </div>
@@ -46,8 +46,8 @@
             </div>
             <div class="card-toolbar">
                 <div class="rounded-circle 
-                @if (@$product->status == 'unpublished') bg-danger
-                @elseif(@$product->status == 'scheduled')
+                @if (@$user->status == 'active') bg-success
+                @elseif(@$user->status == 'inactive')
                 bg-warning
                 @else
                 bg-success @endif          
@@ -60,66 +60,38 @@
             <select name="status" class="form-select mb-2" data-control="select2" data-hide-search="true"
                 data-placeholder="Select an option" id="status" onchange="">
                 <option></option>
-                <option data-status-sign="bg-success" {{ @$product->status == 'published' ? 'selected' : '' }}
-                    value="published" selected="selected">
-                    Published</option>
-                <option data-status-sign="bg-warning" {{ @$product->status == 'scheduled' ? 'selected' : '' }}
-                    value="scheduled">Scheduled</option>
-                <option data-status-sign="bg-danger" {{ @$product->status == 'unpublished' ? 'selected' : '' }}
-                    value="unpublished">Unpublished
-                </option>
+                <option data-status-sign="bg-success" {{ @$user->status == 'active' ? 'selected' : '' }} value="active"
+                    selected="selected">
+                    Active</option>
+                <option data-status-sign="bg-warning" {{ @$user->status == 'inactive' ? 'selected' : '' }}
+                    value="inactive">Inactive</option>
+
             </select>
-            <div class="text-muted fs-7">Set the category status.</div>
-            <div class="
-            @if (@$product->status != 'scheduled') d-none @endif
-            mt-10 date-selector">
-                <label for="" class="form-label">Select
-                    publishing date and time</label>
-                <input class="form-control form-control-solid" placeholder="Pick date rage" id="date_picker"
-                    name="published_date" value="{{ @$product->published_date }}" />
-            </div>
+            <div class="text-muted fs-7">Set the role status.</div>
+
         </div>
     </div>
-    <div class="card card-flush py-4">
+    <div class="card card-flush pt-4">
         <div class="card-header">
             <div class="card-title">
-                <h2>Product Details</h2>
+                <h2>Role</h2>
             </div>
         </div>
         <div class="card-body pt-0">
-            <label class="form-label">Categories</label>
-            <select name="categories[]" class="form-select mb-2" data-control="select2"
-                data-placeholder="Select an option" data-allow-clear="true" multiple="multiple">
+            <label class="form-label"></label>
+            <select name="role" class="form-select mb-2" data-control="select2" data-placeholder="Select an option"
+                data-allow-clear="true">
                 <option></option>
-                @foreach ($categories as $category)
+                @foreach ($roles as $role)
                     <option
-                        @isset($product)
-                        @foreach ($product->categories as $_category)
-                            @if ($category->id == $_category->id)
+                        @isset($user)
+                            @if (@$user->role->id == $role->id)
                                 selected
-                                @break
-                            @endif @endforeach
+                            @endif 
                             @endisset
-                        value="{{ $category->uid }}">{{ $category->name }}</option>
+                        value="{{ $role->uid }}">{{ $role->name }}</option>
                 @endforeach
             </select>
-            <div class="text-muted fs-7 mb-7">Add product to a category.</div>
-            @if (auth()->user()->hasPermission('create-category'))
-                <a href="{{ route('categories.create') }}" class="btn btn-light-primary btn-sm mb-10">
-                    <span class="svg-icon svg-icon-2">
-                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
-                            xmlns="http://www.w3.org/2000/svg">
-                            <rect opacity="0.5" x="11" y="18" width="12" height="2"
-                                rx="1" transform="rotate(-90 11 18)" fill="currentColor"></rect>
-                            <rect x="6" y="11" width="12" height="2" rx="1"
-                                fill="currentColor"></rect>
-                        </svg>
-                    </span>
-                    Create new category</a>
-            @endif
-            <label class="form-label d-block">Tags</label>
-            <input class="form-control" value="{{ @$product->tags }}" id="input_tag" name="tags" />
-            <div class="text-muted fs-7">Add tags to a product.</div>
         </div>
     </div>
 </div>
@@ -130,114 +102,46 @@
                 <h2>General</h2>
             </div>
         </div>
-        <div class="card-body pt-0">
-            <div class="mb-10 fv-row">
-                <label class="required form-label">Product Name</label>
-                <input type="text" name="name" value="{{ @$product->name }}" class="form-control mb-2"
-                    placeholder="Product name" />
-                <div class="text-muted fs-7">A product name is required and recommended to be unique.
+        <div class="card-body my-3">
+            <div class="fv-row">
+                <label class="required form-label">Name</label>
+                <input type="text" name="name" value="{{ @$user->name }}" class="form-control mb-2"
+                    placeholder="User name" required />
+                <div class="text-muted fs-7">A user name is required.
                 </div>
             </div>
-            <div>
-                <label class="form-label">Description</label>
-                <div id="quill_1" data-name="description" class="quill-input min-h-200px mb-2">
-                    {!! @$product->description !!}</div>
-                <div class="text-muted fs-7">Set a description to the category for better visibility.</div>
-            </div>
-        </div>
-    </div>
-    <div class="card card-flush py-4">
-        <div class="card-header">
-            <div class="card-title">
-                <h2>Meta Options</h2>
-            </div>
+
         </div>
         <div class="card-body pt-0">
-            <div class="mb-10">
-                <label class="form-label">Meta Tag Title</label>
-                <input value="{{ @$product->meta_title }}" type="text" class="form-control mb-2"
-                    name="meta_title" placeholder="Meta tag name" />
-                <div class="text-muted fs-7">Set a meta tag title. Recommended to be simple and precise
-                    keywords.</div>
-            </div>
-            <div class="mb-10">
-                <label class="form-label">Meta Tag Description</label>
-                <div id="quill_2" data-name="meta_description" class="quill-input min-h-100px mb-2">
-                    {!! @$product->meta_description !!}</div>
-                <div class="text-muted fs-7">Set a meta tag description to the category for increased SEO
-                    ranking.</div>
-            </div>
-            <div>
-                <label class="form-label">Meta Tag Keywords</label>
-                <input id="" name="meta_keywords" class="form-control mb-2"
-                    value="{{ @$product->meta_keywords }}" />
-                <div class="text-muted fs-7">Set a list of keywords that the category is related to.
-                    Separate the keywords by adding a comma
-                    <code>,</code>between each keyword.
+            <div class="fv-row">
+                <label class="required form-label">Email</label>
+                <input type="email" name="email" value="{{ @$user->email }}" class="form-control mb-2"
+                    placeholder="User Email" required />
+                <div class="text-muted fs-7">An email is required.
                 </div>
             </div>
         </div>
-    </div>
-
-    <div class="card card-flush py-4">
-        <!--begin::Card header-->
-        <div class="card-header">
-            <div class="card-title">
-                <h2>Media</h2>
-            </div>
-        </div>
-        <!--end::Card header-->
-        <!--begin::Card body-->
         <div class="card-body pt-0">
-            <!--begin::Input group-->
-            <div class="fv-row mb-2">
-                <!--begin::Dropzone-->
-                <div class="col-md-12">
-
-                    <div class="form-group">
-                        <div class="row images-container">
-                            @isset($product)
-                                @php
-                                    $images = json_decode($product->images);
-                                @endphp
-                                @if ($images)
-                                    @foreach ($images as $image)
-                                        <div class="col-xs-2 col-md-3 file-upload-box mt-1 position-relative ">
-
-                                            <div class="text-white text-center image-box _image-box">
-                                                <button class="btn-remove-image text-danger"><i
-                                                        class="fa fa-times"></i></button>
-                                                <img src="{{ asset('assets/media/products/images/') . '/' . $image }}"
-                                                    alt="">
-                                                <input type="text" name="old_images[]" value="{{ $image }}"
-                                                    class="file-selector" style="display:none" id="">
-                                            </div>
-                                        </div>
-                                    @endforeach
-                                @endif
-                            @endisset
-                            <div class="col-xs-2 col-md-3 file-upload-box mt-1  position-relative">
-                                <div class="text-white text-center upload-box _image-box">
-                                    <i class="fa fa-upload fs-1 mt-5"></i>
-                                </div>
-                                <input type="file" name="images[]" class="file-selector" style="display:none"
-                                    id="">
-                            </div>
-                        </div>
+            <div class="row">
+                <div class="col-md-6 my-3"> <label class="required form-label">Password</label>
+                    <input type="password" id="password" name="password" class="form-control mb-2"
+                        placeholder="Password" @if(@$user == false) required @endif />
+                    <div class="text-muted fs-7">A password is required.
                     </div>
                 </div>
-                <!--end::Dropzone-->
+                <div class="col-md-6 my-3"> <label class="required form-label">Confirm Password</label>
+                    <input type="password" id="co_password" name="co_password" class="form-control mb-2"
+                        placeholder="Confirm Password" @if(@$user == false) required @endif />
+                    <div class="text-muted fs-7">Confirm your password.
+                    </div>
+                </div>
             </div>
-            <!--end::Input group-->
-            <!--begin::Description-->
-            <div class="text-muted fs-7">Set the product media gallery.</div>
-            <!--end::Description-->
         </div>
-        <!--end::Card header-->
     </div>
 
+
     <div class="d-flex justify-content-end">
-        <a href="{{ route('products.index') }}" id="kt_ecommerce_add_product_cancel"
+        <a href="{{ route('users.index') }}" id="kt_ecommerce_add_product_cancel"
             class="btn btn-light me-5">Cancel</a>
         <button type="submit" id="kt_ecommerce_add_category_submit" class="btn btn-primary">
             <span class="indicator-label">Save Changes</span>
