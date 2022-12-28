@@ -14,10 +14,10 @@ class CreatePermissionsTable extends Migration
     public function up()
     {
         Schema::create('permissions', function (Blueprint $table) {
-            $table->id();
-            $table->string('uid');
+            $table->unsignedInteger('id')->autoIncrement();
             $table->string('name');
             $table->timestamps();
+            $table->uuid('uid');
         });
     }
 

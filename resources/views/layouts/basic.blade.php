@@ -63,6 +63,12 @@
          <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0"
             style="display:none;visibility:hidden"></iframe>
     </noscript>
+    
+    <div class="page-loader">
+        <span class="spinner-border text-primary d-flex" role="status">
+            <span class="visually-hidden">Loading...</span>
+        </span>
+    </div>
     <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
         <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
             <div id="kt_app_header" class="app-header">

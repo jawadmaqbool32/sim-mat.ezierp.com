@@ -14,8 +14,7 @@ class CreateProductsTable extends Migration
     public function up()
     {
         Schema::create('products', function (Blueprint $table) {
-            $table->id();
-            $table->string('uid');
+            $table->unsignedInteger('id');
             $table->string('name');
             $table->string('thumbnail')->nullable();
             $table->text('description')->nullable();
@@ -28,6 +27,7 @@ class CreateProductsTable extends Migration
             $table->json('images')->nullable();
             $table->enum('status', ['published', 'scheduled', 'unpublished'])->nullable();
             $table->timestamps();
+            $table->uuid('uid');
         });
     }
 

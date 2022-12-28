@@ -14,8 +14,7 @@ class CreateCategoriesTable extends Migration
     public function up()
     {
         Schema::create('categories', function (Blueprint $table) {
-            $table->id();
-            $table->string('uid');
+            $table->unsignedInteger('id')->autoIncrement();
             $table->string('name');
             $table->string('thumbnail')->nullable();
             $table->text('description')->nullable();
@@ -25,6 +24,7 @@ class CreateCategoriesTable extends Migration
             $table->datetime('published_date')->nullable();
             $table->enum('status', ['published', 'scheduled', 'unpublished'])->nullable();
             $table->timestamps();
+            $table->uuid('uid');
         });
     }
 
