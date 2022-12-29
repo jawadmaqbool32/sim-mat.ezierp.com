@@ -51,7 +51,28 @@
 
                             toastr.success(
                                 response.message,
-                                "Reset Preview!", {
+                                "Success", {
+                                    timeOut: 5000,
+                                    extendedTimeOut: 0,
+                                    closeButton: true,
+                                    closeDuration: 0
+                                }
+                            );
+                        } else if (response.error) {
+
+                            toastr.error(
+                                response.message,
+                                "Error", {
+                                    timeOut: 5000,
+                                    extendedTimeOut: 0,
+                                    closeButton: true,
+                                    closeDuration: 0
+                                }
+                            );
+                        } else if (response.warning) {
+                            toastr.warning(
+                                response.message,
+                                "warning", {
                                     timeOut: 5000,
                                     extendedTimeOut: 0,
                                     closeButton: true,
@@ -71,15 +92,35 @@
                         }
                     },
                     error: function(response) {
-                        toastr.error(
-                            response.message,
-                            "Reset Preview!", {
-                                timeOut: 5000,
-                                extendedTimeOut: 0,
-                                closeButton: true,
-                                closeDuration: 0
+                        if (response.status == 422) {
+                            const errors = response.responseJSON.errors;
+                            for (const key in errors) {
+                                $(`[name="${key}"]`).addClass('border-danger');
+                                if (errors.hasOwnProperty.call(errors, key)) {
+                                    const error = errors[key];
+                                    toastr.error(
+                                        error[0],
+                                        key.toUpperCase(), {
+                                            timeOut: 5000,
+                                            extendedTimeOut: 0,
+                                            closeButton: true,
+                                            closeDuration: 0
+                                        }
+                                    );
+                                }
                             }
-                        );
+                        } else {
+                            toastr.error(
+                                response.message,
+                                "Error", {
+                                    timeOut: 5000,
+                                    extendedTimeOut: 0,
+                                    closeButton: true,
+                                    closeDuration: 0
+                                }
+                            );
+                        }
+
                     },
                     complete: function() {
                         selector.removeAttr('disabled');

@@ -39,39 +39,6 @@
                     </div>
                 </div>
             </div>
-            <div class="card-toolbar">
-                <button type="button" class="btn btn-sm btn-icon btn-color-primary btn-active-light-primary"
-                    data-kt-menu-trigger="click" data-kt-menu-placement="bottom-end">
-                    <span class="svg-icon svg-icon-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" viewBox="0 0 24 24">
-                            <g stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-                                <rect x="5" y="5" width="5" height="5" rx="1"
-                                    fill="currentColor"></rect>
-                                <rect x="14" y="5" width="5" height="5" rx="1"
-                                    fill="currentColor" opacity="0.3"></rect>
-                                <rect x="5" y="14" width="5" height="5" rx="1"
-                                    fill="currentColor" opacity="0.3"></rect>
-                                <rect x="14" y="14" width="5" height="5" rx="1"
-                                    fill="currentColor" opacity="0.3"></rect>
-                            </g>
-                        </svg>
-                    </span>
-                </button>
-                <div class="menu menu-sub menu-sub-dropdown menu-column menu-rounded menu-gray-800 menu-state-bg-light-primary fw-semibold w-200px"
-                    data-kt-menu="true" style="">
-                    <div class="menu-item px-3">
-                        <div class="menu-content fs-6 text-dark fw-bold px-3 py-4">Quick Actions</div>
-                    </div>
-                    <div class="separator mb-3 opacity-75"></div>
-                    <div class="menu-item px-3 mb-3">
-                        @can('create voucher type')
-                            <a data-bs-target="#create_modal" data-bs-toggle="modal" class="menu-link px-3">Create Voucher
-                                Type</a>
-                        @endcan
-                    </div>
-
-                </div>
-            </div>
         </div>
         <div class="card-body pt-3">
             <div class="table-responsive">
@@ -81,7 +48,7 @@
                             <th class="fw-bold p-0">SR#</th>
                             <th class="fw-bold p-0 min-w-150px text-start">Name</th>
                             <th class="fw-bold p-0 min-w-150px text-start">Short</th>
-                            <th class="fw-bold p-0 min-w-100px text-end">Actions</th>
+                            <th class="fw-bold p-0 min-w-100px text-end"></th>
                         </tr>
                     </thead>
                     <tbody>
@@ -90,9 +57,6 @@
             </div>
         </div>
     </div>
-    <x-delete url="{{ url('voucher-type/') }}/" />
-    @include('vouchers.create_modal')
-    @include('vouchers.edit_modal')
 @endsection
 
 @section('jsSection')

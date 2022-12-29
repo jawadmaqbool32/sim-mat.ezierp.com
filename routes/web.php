@@ -33,7 +33,7 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         Route::resource('users', UserController::class);
         Route::resource('roles', RoleController::class);
         Route::resource('permissions', PermissionController::class);
-        Route::resource('voucher-type', VoucherTypeController::class);
+        Route::resource('voucher-types', VoucherTypeController::class);
 
         Route::group(['prefix' => 'accounts'], function () {
             Route::get('/', 'AccountController@index');

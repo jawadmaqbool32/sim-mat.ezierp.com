@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Core\Helper;
+use App\Exceptions\CustomException;
 use App\Models\Category;
 use Exception;
 use Illuminate\Http\Request;
@@ -58,6 +59,7 @@ class CategoryController extends Controller
         ]);
         DB::beginTransaction();
         try {
+
             $image = '';
             $thumbnail = Helper::uploadfile([
                 'file' => $request->file('thumbnail'),
@@ -77,7 +79,7 @@ class CategoryController extends Controller
             ]);
             DB::commit();
             return response([
-                'error' => true,
+                'success' => true,
                 'message' => 'New Record Added',
                 'redirect' => true,
                 'url' => route('categories.index'),
@@ -85,7 +87,7 @@ class CategoryController extends Controller
         } catch (Exception $e) {
             DB::rollBack();
             return response([
-                'success' => true,
+                'error' => true,
                 'message' => 'Something went wrong',
                 'console' => $e->getMessage(),
             ]);
@@ -162,7 +164,7 @@ class CategoryController extends Controller
         } catch (Exception $e) {
             DB::rollBack();
             return response([
-                'success' => true,
+                'error' => true,
                 'message' => 'Something went wrong',
                 'console' => $e->getMessage(),
             ]);

@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AccountLevel1;
 use App\Models\VoucherType;
 use Illuminate\Http\Request;
 
@@ -17,7 +18,8 @@ class VoucherTypeController extends Controller
         if ($request->ajax()) {
             return VoucherType::dataTable();
         }
-        return view('voucher_types.index');
+        $accounts = AccountLevel1::get();
+        return view('voucher_types.index', compact('accounts'));
     }
 
     /**

@@ -19,19 +19,21 @@ class CreateVoucherTypesTable extends Migration
             $table->uuid('uid');
             $table->string('name');
             $table->enum('credit_level', [
+                'all',
                 'level1',
                 'level2',
                 'level3',
                 'level4'
             ])->default('level4');
             $table->enum('debit_level', [
+                'all',
                 'level1',
                 'level2',
                 'level3',
                 'level4'
             ])->default('level4');
-            $table->unsignedInteger('credit_id');
-            $table->unsignedInteger('debit_id');
+            $table->unsignedInteger('credit_id')->nullable();
+            $table->unsignedInteger('debit_id')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
         });
