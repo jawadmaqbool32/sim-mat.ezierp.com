@@ -14,7 +14,11 @@
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
                     <a href="../apps/ecommerce/sales/listing.html"
                         class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Manage Sales</a>
-                    @can('create-product')
+                    @can('add stock')
+                        <a data-bs-target="#add_stock_modal" data-bs-toggle="modal" class="btn btn-sm fw-bold btn-primary">Add
+                            Stock</a>
+                    @endcan
+                    @can('create product')
                         <a href="{{ route('products.create') }}" class="btn btn-sm fw-bold btn-primary">Add
                             Product</a>
                     @endcan
@@ -2026,4 +2030,9 @@
             </div>
         </div>
     </div>
+    <x-add-stock-modal />
 @endsection
+@section('jsSection')
+    @include('dashboard._js');
+@endsection
+

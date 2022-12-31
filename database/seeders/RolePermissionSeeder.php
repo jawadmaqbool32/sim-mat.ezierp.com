@@ -44,7 +44,8 @@ class RolePermissionSeeder extends Seeder
             'view voucher',
             'create voucher',
             'edit voucher',
-            'delete voucher'
+            'delete voucher',
+            'add stock'
         ];
         $roles = [
             'superadmin'

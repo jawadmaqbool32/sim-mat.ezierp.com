@@ -54,4 +54,10 @@ class VoucherType extends UIDModel
             ->rawColumns(['action'])
             ->make(true);
     }
+
+
+    public function vouchers()
+    {
+        return $this->hasMany(Voucher::class, 'voucher_type_id', 'id');
+    }
 }

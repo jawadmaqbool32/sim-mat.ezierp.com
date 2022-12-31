@@ -15,9 +15,8 @@ class CreateVoucherTypesTable extends Migration
     {
         Schema::create('voucher_types', function (Blueprint $table) {
             $table->unsignedInteger('id')->autoIncrement();
-            $table->string('short', 10);
-            $table->uuid('uid');
             $table->string('name');
+            $table->string('short', 10);
             $table->enum('credit_level', [
                 'all',
                 'level1',
@@ -36,6 +35,7 @@ class CreateVoucherTypesTable extends Migration
             $table->unsignedInteger('debit_id')->nullable();
             $table->string('description')->nullable();
             $table->timestamps();
+            $table->uuid('uid');
         });
     }
 

@@ -80,6 +80,7 @@
                             <th class="fw-bold p-0">SR#</th>
                             <th class="fw-bold p-0">Thumb</th>
                             <th class="fw-bold p-0 min-w-150px text-start">Name</th>
+                            <th class="fw-bold p-0 min-w-150px text-start">Stock</th>
                             <th class="text-center"></th>
                             <th class="fw-bold p-0 min-w-100px text-end">Actions</th>
                         </tr>
@@ -114,6 +115,9 @@
                     },
                     {
                         "data": "name"
+                    },
+                    {
+                        "data": "stock"
                     },
                     {
                         "data": "status"

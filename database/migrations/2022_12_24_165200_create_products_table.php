@@ -24,6 +24,8 @@ class CreateProductsTable extends Migration
             $table->text('meta_description')->nullable();
             $table->datetime('published_date')->nullable();
             $table->double('unit_price')->default(0);
+            $table->double('purchase_price')->default(0);
+            $table->integer('stock')->default(0);
             $table->json('images')->nullable();
             $table->enum('status', ['published', 'scheduled', 'unpublished'])->nullable();
             $table->timestamps();

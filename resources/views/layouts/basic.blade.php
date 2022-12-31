@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
 <head>
     <title>Metronic - the world's #1 selling Bootstrap Admin Theme Ecosystem for HTML, Vue, React, Angular & Laravel by
         Keenthemes</title>
@@ -17,7 +18,7 @@
     <meta property="og:url" content="https://keenthemes.com/metronic" />
     <meta property="og:site_name" content="Keenthemes | Metronic" />
     <link rel="canonical" href="https://preview.keenthemes.com/metronic8" />
-    <link rel="shortcut icon" href="{{asset('assets/media/logos/favicon.ico')}}" />
+    <link rel="shortcut icon" href="{{ asset('assets/media/logos/favicon.ico') }}" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     @include('layouts.style')
     <script>
@@ -36,6 +37,7 @@
         })(window, document, 'script', 'dataLayer', 'GTM-5FS8GGP');
     </script>
 </head>
+
 <body id="kt_app_body" data-kt-app-layout="dark-sidebar" data-kt-app-header-fixed="true"
     data-kt-app-sidebar-enabled="true" data-kt-app-sidebar-fixed="true" data-kt-app-sidebar-hoverable="true"
     data-kt-app-sidebar-push-header="true" data-kt-app-sidebar-push-toolbar="true"
@@ -60,15 +62,11 @@
         }
     </script>
     <noscript>
-         <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0"
+        <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-5FS8GGP" height="0" width="0"
             style="display:none;visibility:hidden"></iframe>
     </noscript>
-    
-    <div class="page-loader">
-        <span class="spinner-border text-primary d-flex" role="status">
-            <span class="visually-hidden">Loading...</span>
-        </span>
-    </div>
+
+
     <div class="d-flex flex-column flex-root app-root" id="kt_app_root">
         <div class="app-page flex-column flex-column-fluid" id="kt_app_page">
             <div id="kt_app_header" class="app-header">
@@ -114,7 +112,7 @@
         <div class="card border-0 shadow-none rounded-0 w-100">
             <div class="card-header bgi-position-y-bottom bgi-position-x-end bgi-size-cover bgi-no-repeat rounded-0 border-0 py-4"
                 id="kt_app_layout_builder_header"
-                style="background-image:url('{{asset('assets/media/misc/layout/header-bg.jpg')}}')">
+                style="background-image:url('{{ asset('assets/media/misc/layout/header-bg.jpg') }}')">
                 <h3 class="card-title fs-3 fw-bold text-white flex-column m-0">Metronic Builder
                     <small class="text-white opacity-50 fs-7 fw-semibold pt-1">Get your product deeply
                         customized</small>
@@ -158,8 +156,8 @@
                                     <div class="col-6">
                                         <label class="form-check-image form-check-success">
                                             <div class="form-check-wrapper">
-                                                <img src="{{asset('assets/media/misc/layout/demo1-light.png')}}" class="mw-100"
-                                                    alt="" />
+                                                <img src="{{ asset('assets/media/misc/layout/demo1-light.png') }}"
+                                                    class="mw-100" alt="" />
                                             </div>
                                             <div
                                                 class="form-check form-check-custom form-check-solid form-check-sm form-check-success">
@@ -172,8 +170,8 @@
                                     <div class="col-6">
                                         <label class="form-check-image form-check-success">
                                             <div class="form-check-wrapper">
-                                                <img src="{{asset('assets/media/misc/layout/demo1-dark.png')}}" class="mw-100"
-                                                    alt="" />
+                                                <img src="{{ asset('assets/media/misc/layout/demo1-dark.png') }}"
+                                                    class="mw-100" alt="" />
                                             </div>
                                             <div
                                                 class="form-check form-check-custom form-check-solid form-check-sm form-check-success">
@@ -277,8 +275,8 @@
                                     <div class="col-6">
                                         <label class="form-check-image form-check-success active active">
                                             <div class="form-check-wrapper">
-                                                <img src="{{asset('assets/media/misc/layout/dark-sidebar.png')}}" class="mw-100"
-                                                    alt="" />
+                                                <img src="{{ asset('assets/media/misc/layout/dark-sidebar.png') }}"
+                                                    class="mw-100" alt="" />
                                             </div>
                                             <div
                                                 class="form-check form-check-custom form-check-success form-check-sm form-check-solid">
@@ -292,7 +290,7 @@
                                     <div class="col-6">
                                         <label class="form-check-image form-check-success">
                                             <div class="form-check-wrapper">
-                                                <img src="{{asset('assets/media/misc/layout/light-sidebar.png')}}"
+                                                <img src="{{ asset('assets/media/misc/layout/light-sidebar.png') }}"
                                                     class="mw-100" alt="" />
                                             </div>
                                             <div
@@ -306,8 +304,8 @@
                                     <div class="col-6">
                                         <label class="form-check-image form-check-success">
                                             <div class="form-check-wrapper">
-                                                <img src="{{asset('assets/media/misc/layout/dark-header.png')}}" class="mw-100"
-                                                    alt="" />
+                                                <img src="{{ asset('assets/media/misc/layout/dark-header.png') }}"
+                                                    class="mw-100" alt="" />
                                             </div>
                                             <div
                                                 class="form-check form-check-custom form-check-success form-check-sm form-check-solid">
@@ -320,8 +318,8 @@
                                     <div class="col-6">
                                         <label class="form-check-image form-check-success">
                                             <div class="form-check-wrapper">
-                                                <img src="{{asset('assets/media/misc/layout/light-header.png')}}" class="mw-100"
-                                                    alt="" />
+                                                <img src="{{ asset('assets/media/misc/layout/light-header.png') }}"
+                                                    class="mw-100" alt="" />
                                             </div>
                                             <div
                                                 class="form-check form-check-custom form-check-success form-check-sm form-check-solid">
@@ -410,7 +408,8 @@
                                         <div class="text-muted me-2 fs-7">Added at 4:23 PM by</div>
                                         <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                             data-bs-boundary="window" data-bs-placement="top" title="Nina Nilson">
-                                            <img src="{{asset('assets/media/avatars/300-14.jpg')}}" alt="img" />
+                                            <img src="{{ asset('assets/media/avatars/300-14.jpg') }}"
+                                                alt="img" />
                                         </div>
                                     </div>
                                 </div>
@@ -426,10 +425,12 @@
                                         <div
                                             class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px pe-2">
                                             <div class="symbol symbol-circle symbol-25px">
-                                                <img src="{{asset('assets/media/avatars/300-2.jpg')}}" alt="img" />
+                                                <img src="{{ asset('assets/media/avatars/300-2.jpg') }}"
+                                                    alt="img" />
                                             </div>
                                             <div class="symbol symbol-circle symbol-25px">
-                                                <img src="{{asset('assets/media/avatars/300-14.jpg')}}" alt="img" />
+                                                <img src="{{ asset('assets/media/avatars/300-14.jpg') }}"
+                                                    alt="img" />
                                             </div>
                                             <div class="symbol symbol-circle symbol-25px">
                                                 <div
@@ -453,7 +454,8 @@
                                         </div>
                                         <div class="symbol-group symbol-hover flex-nowrap flex-grow-1 min-w-100px">
                                             <div class="symbol symbol-circle symbol-25px">
-                                                <img src="{{asset('assets/media/avatars/300-20.jpg')}}" alt="img" />
+                                                <img src="{{ asset('assets/media/avatars/300-20.jpg') }}"
+                                                    alt="img" />
                                             </div>
                                             <div class="symbol symbol-circle symbol-25px">
                                                 <div
@@ -495,7 +497,8 @@
                                         <div class="text-muted me-2 fs-7">Sent at 4:23 PM by</div>
                                         <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                             data-bs-boundary="window" data-bs-placement="top" title="Alan Nilson">
-                                            <img src="{{asset('assets/media/avatars/300-1.jpg')}}" alt="img" />
+                                            <img src="{{ asset('assets/media/avatars/300-1.jpg') }}"
+                                                alt="img" />
                                         </div>
                                     </div>
                                 </div>
@@ -526,7 +529,8 @@
                                         <div class="text-muted me-2 fs-7">Sent at 10:30 PM by</div>
                                         <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                             data-bs-boundary="window" data-bs-placement="top" title="Jan Hummer">
-                                            <img src="{{asset('assets/media/avatars/300-23.jpg')}}" alt="img" />
+                                            <img src="{{ asset('assets/media/avatars/300-23.jpg') }}"
+                                                alt="img" />
                                         </div>
                                     </div>
                                 </div>
@@ -535,7 +539,7 @@
                                         class="d-flex align-items-center border border-dashed border-gray-300 rounded min-w-700px p-5">
                                         <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
                                             <img alt="" class="w-30px me-3"
-                                                src="{{asset('assets/media/svg/files/pdf.svg')}}" />
+                                                src="{{ asset('assets/media/svg/files/pdf.svg') }}" />
                                             <div class="ms-1 fw-semibold">
                                                 <a href="../apps/projects/project.html"
                                                     class="fs-6 text-hover-primary fw-bold">Finance KPI App
@@ -545,7 +549,8 @@
                                         </div>
                                         <div class="d-flex flex-aligns-center pe-10 pe-lg-20">
                                             <img alt="/metronic8/demo1/../demo1/apps/projects/project.html"
-                                                class="w-30px me-3" src="{{asset('assets/media/svg/files/doc.svg')}}" />
+                                                class="w-30px me-3"
+                                                src="{{ asset('assets/media/svg/files/doc.svg') }}" />
                                             <div class="ms-1 fw-semibold">
                                                 <a href="#" class="fs-6 text-hover-primary fw-bold">Client UAT
                                                     Testing Results</a>
@@ -554,7 +559,8 @@
                                         </div>
                                         <div class="d-flex flex-aligns-center">
                                             <img alt="/metronic8/demo1/../demo1/apps/projects/project.html"
-                                                class="w-30px me-3" src="{{asset('assets/media/svg/files/css.svg')}}" />
+                                                class="w-30px me-3"
+                                                src="{{ asset('assets/media/svg/files/css.svg') }}" />
                                             <div class="ms-1 fw-semibold">
                                                 <a href="#" class="fs-6 text-hover-primary fw-bold">Finance
                                                     Reports</a>
@@ -593,7 +599,8 @@
                                         <div class="text-muted me-2 fs-7">Initiated at 4:23 PM by</div>
                                         <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                             data-bs-boundary="window" data-bs-placement="top" title="Nina Nilson">
-                                            <img src="{{asset('assets/media/avatars/300-14.jpg')}}" alt="img" />
+                                            <img src="{{ asset('assets/media/avatars/300-14.jpg') }}"
+                                                alt="img" />
                                         </div>
                                     </div>
                                 </div>
@@ -623,7 +630,8 @@
                                         <div class="text-muted me-2 fs-7">Created at 4:23 PM by</div>
                                         <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                             data-bs-boundary="window" data-bs-placement="top" title="Marcus Dotson">
-                                            <img src="{{asset('assets/media/avatars/300-2.jpg')}}" alt="img" />
+                                            <img src="{{ asset('assets/media/avatars/300-2.jpg') }}"
+                                                alt="img" />
                                         </div>
                                     </div>
                                 </div>
@@ -633,7 +641,7 @@
                                         <div class="overlay me-10">
                                             <div class="overlay-wrapper">
                                                 <img alt="img" class="rounded w-150px"
-                                                    src="{{asset('assets/media/stock/600x400/img-29.jpg')}}" />
+                                                    src="{{ asset('assets/media/stock/600x400/img-29.jpg') }}" />
                                             </div>
                                             <div class="overlay-layer bg-dark bg-opacity-10 rounded">
                                                 <a href="#"
@@ -643,7 +651,7 @@
                                         <div class="overlay me-10">
                                             <div class="overlay-wrapper">
                                                 <img alt="img" class="rounded w-150px"
-                                                    src="{{asset('assets/media/stock/600x400/img-31.jpg')}}" />
+                                                    src="{{ asset('assets/media/stock/600x400/img-31.jpg') }}" />
                                             </div>
                                             <div class="overlay-layer bg-dark bg-opacity-10 rounded">
                                                 <a href="#"
@@ -653,7 +661,7 @@
                                         <div class="overlay">
                                             <div class="overlay-wrapper">
                                                 <img alt="img" class="rounded w-150px"
-                                                    src="{{asset('assets/media/stock/600x400/img-40.jpg')}}" />
+                                                    src="{{ asset('assets/media/stock/600x400/img-40.jpg') }}" />
                                             </div>
                                             <div class="overlay-layer bg-dark bg-opacity-10 rounded">
                                                 <a href="#"
@@ -720,7 +728,8 @@
                                         <div class="text-muted me-2 fs-7">Placed at 5:05 AM by</div>
                                         <div class="symbol symbol-circle symbol-25px" data-bs-toggle="tooltip"
                                             data-bs-boundary="window" data-bs-placement="top" title="Robert Rich">
-                                            <img src="{{asset('assets/media/avatars/300-4.jpg')}}" alt="img" />
+                                            <img src="{{ asset('assets/media/avatars/300-4.jpg') }}"
+                                                alt="img" />
                                         </div>
                                     </div>
                                 </div>
@@ -890,7 +899,7 @@
                         <div class="d-flex flex-column align-items-start">
                             <div class="d-flex align-items-center mb-2">
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset('assets/media/avatars/300-25.jpg')}}" />
+                                    <img alt="Pic" src="{{ asset('assets/media/avatars/300-25.jpg') }}" />
                                 </div>
                                 <div class="ms-3">
                                     <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian
@@ -912,7 +921,7 @@
                                         class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
                                 </div>
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset('assets/media/avatars/300-1.jpg')}}" />
+                                    <img alt="Pic" src="{{ asset('assets/media/avatars/300-1.jpg') }}" />
                                 </div>
                             </div>
                             <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
@@ -924,7 +933,7 @@
                         <div class="d-flex flex-column align-items-start">
                             <div class="d-flex align-items-center mb-2">
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset('assets/media/avatars/300-25.jpg')}}" />
+                                    <img alt="Pic" src="{{ asset('assets/media/avatars/300-25.jpg') }}" />
                                 </div>
                                 <div class="ms-3">
                                     <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian
@@ -945,7 +954,7 @@
                                         class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
                                 </div>
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset('assets/media/avatars/300-1.jpg')}}" />
+                                    <img alt="Pic" src="{{ asset('assets/media/avatars/300-1.jpg') }}" />
                                 </div>
                             </div>
                             <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
@@ -957,7 +966,7 @@
                         <div class="d-flex flex-column align-items-start">
                             <div class="d-flex align-items-center mb-2">
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset('assets/media/avatars/300-25.jpg')}}" />
+                                    <img alt="Pic" src="{{ asset('assets/media/avatars/300-25.jpg') }}" />
                                 </div>
                                 <div class="ms-3">
                                     <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian
@@ -981,7 +990,7 @@
                                         class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
                                 </div>
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset('assets/media/avatars/300-1.jpg')}}" />
+                                    <img alt="Pic" src="{{ asset('assets/media/avatars/300-1.jpg') }}" />
                                 </div>
                             </div>
                             <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
@@ -992,7 +1001,7 @@
                         <div class="d-flex flex-column align-items-start">
                             <div class="d-flex align-items-center mb-2">
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset('assets/media/avatars/300-25.jpg')}}" />
+                                    <img alt="Pic" src="{{ asset('assets/media/avatars/300-25.jpg') }}" />
                                 </div>
                                 <div class="ms-3">
                                     <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian
@@ -1014,7 +1023,7 @@
                                         class="fs-5 fw-bold text-gray-900 text-hover-primary ms-1">You</a>
                                 </div>
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset('assets/media/avatars/300-1.jpg')}}" />
+                                    <img alt="Pic" src="{{ asset('assets/media/avatars/300-1.jpg') }}" />
                                 </div>
                             </div>
                             <div class="p-5 rounded bg-light-primary text-dark fw-semibold mw-lg-400px text-end"
@@ -1025,7 +1034,7 @@
                         <div class="d-flex flex-column align-items-start">
                             <div class="d-flex align-items-center mb-2">
                                 <div class="symbol symbol-35px symbol-circle">
-                                    <img alt="Pic" src="{{asset('assets/media/avatars/300-25.jpg')}}" />
+                                    <img alt="Pic" src="{{ asset('assets/media/avatars/300-25.jpg') }}" />
                                 </div>
                                 <div class="ms-3">
                                     <a href="#" class="fs-5 fw-bold text-gray-900 text-hover-primary me-1">Brian
@@ -1059,16 +1068,16 @@
             </div>
         </div>
     </div>
-    <div id="kt_engage_demos" class="bg-body" data-kt-drawer="true" data-kt-drawer-name="explore"
+    <div id="kt_add_stock" class="bg-body" data-kt-drawer="true" data-kt-drawer-name="explore"
         data-kt-drawer-activate="true" data-kt-drawer-overlay="true"
         data-kt-drawer-width="{default:'350px', 'lg': '475px'}" data-kt-drawer-direction="end"
-        data-kt-drawer-toggle="#kt_engage_demos_toggle" data-kt-drawer-close="#kt_engage_demos_close">
+        data-kt-drawer-toggle="#kt_engage_add_stock_toggle" data-kt-drawer-close="#kt_add_stock_close">
         <div class="card shadow-none rounded-0 w-100">
-            <div class="card-header" id="kt_engage_demos_header">
-                <h3 class="card-title fw-bold text-gray-700">Quick Actions</h3>
+            <div class="card-header" id="kt_add_stock_header">
+                <h3 class="card-title fw-bold text-gray-700">Add Stocks</h3>
                 <div class="card-toolbar">
                     <button type="button" class="btn btn-sm btn-icon btn-active-color-primary h-40px w-40px me-n6"
-                        id="kt_engage_demos_close">
+                        id="kt_add_stock_close">
                         <span class="svg-icon svg-icon-2">
                             <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                 xmlns="http://www.w3.org/2000/svg">
@@ -1081,19 +1090,17 @@
                     </button>
                 </div>
             </div>
-            <div class="card-body" id="kt_engage_demos_body">
+            <div class="card-body" id="kt_add_stock_body">
                 <div id="kt_explore_scroll" class="scroll-y me-n5 pe-5" data-kt-scroll="true"
-                    data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_engage_demos_body"
-                    data-kt-scroll-dependencies="#kt_engage_demos_header" data-kt-scroll-offset="5px">
+                    data-kt-scroll-height="auto" data-kt-scroll-wrappers="#kt_add_stock_body"
+                    data-kt-scroll-dependencies="#kt_add_stock_header" data-kt-scroll-offset="5px">
                     <div class="mb-0">
                         <div class="mb-7">
                             <div class="d-flex flex-stack">
-                                <h3 class="mb-0">Metronic Licenses</h3>
-                                <a href="https://themeforest.net/licenses/standard" class="fw-semibold"
-                                    target="_blank">License FAQs</a>
+                                <button class="btn btn-primary btn-sm float-end"><i
+                                        class="bi bi-plus fs-1 fw-bold"></i></button>
                             </div>
                         </div>
-                      
                     </div>
                 </div>
             </div>
@@ -1102,11 +1109,10 @@
 
     <div
         class="engage-toolbar d-flex position-fixed px-5 fw-bold zindex-2 top-50 end-0 transform-90 mt-5 mt-lg-20 gap-2">
-        <button id="kt_engage_demos_toggle"
-            class="engage-demos-toggle engage-btn btn shadow-sm fs-6 px-4 rounded-top-0"
-            title="Check out 24 more demos" data-bs-toggle="tooltip" data-bs-placement="left"
-            data-bs-dismiss="click" data-bs-trigger="hover">
-            <span id="kt_engage_demos_label">Demos</span>
+        <button id="kt_engage_add_stock_toggle"
+            class="engage-demos-toggle engage-btn btn shadow-sm fs-6 px-4 rounded-top-0" title="Add New Stock"
+            data-bs-toggle="tooltip" data-bs-placement="left" data-bs-dismiss="click" data-bs-trigger="hover">
+            <span id="kt_engage_add_stock_label">Add Stock</span>
         </button>
         <button id="kt_help_toggle" class="engage-help-toggle btn engage-btn shadow-sm px-5 rounded-top-0"
             title="Learn & Get Inspired" data-bs-toggle="tooltip" data-bs-placement="left"
@@ -1772,7 +1778,7 @@
                             <div class="d-flex flex-stack py-5 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-6.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-6.jpg') }}" />
                                     </div>
                                     <div class="ms-6">
                                         <a href="#"
@@ -1814,7 +1820,7 @@
                             <div class="d-flex flex-stack py-5 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-1.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-1.jpg') }}" />
                                     </div>
                                     <div class="ms-6">
                                         <a href="#"
@@ -1835,7 +1841,7 @@
                             <div class="d-flex flex-stack py-5 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-5.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-5.jpg') }}" />
                                     </div>
                                     <div class="ms-6">
                                         <a href="#"
@@ -1856,7 +1862,7 @@
                             <div class="d-flex flex-stack py-5 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-25.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-25.jpg') }}" />
                                     </div>
                                     <div class="ms-6">
                                         <a href="#"
@@ -1898,7 +1904,7 @@
                             <div class="d-flex flex-stack py-5 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-9.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-9.jpg') }}" />
                                     </div>
                                     <div class="ms-6">
                                         <a href="#"
@@ -1961,7 +1967,7 @@
                             <div class="d-flex flex-stack py-5 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-23.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-23.jpg') }}" />
                                     </div>
                                     <div class="ms-6">
                                         <a href="#"
@@ -2003,7 +2009,7 @@
                             <div class="d-flex flex-stack py-5 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-12.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-12.jpg') }}" />
                                     </div>
                                     <div class="ms-6">
                                         <a href="#"
@@ -2127,7 +2133,8 @@
                                     <a href="#"
                                         class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                         <div class="symbol symbol-35px symbol-circle me-5">
-                                            <img alt="Pic" src="{{asset('assets/media/avatars/300-6.jpg')}}" />
+                                            <img alt="Pic"
+                                                src="{{ asset('assets/media/avatars/300-6.jpg') }}" />
                                         </div>
                                         <div class="fw-semibold">
                                             <span class="fs-6 text-gray-800 me-2">Emma Smith</span>
@@ -2148,7 +2155,8 @@
                                     <a href="#"
                                         class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                         <div class="symbol symbol-35px symbol-circle me-5">
-                                            <img alt="Pic" src="{{asset('assets/media/avatars/300-1.jpg')}}" />
+                                            <img alt="Pic"
+                                                src="{{ asset('assets/media/avatars/300-1.jpg') }}" />
                                         </div>
                                         <div class="fw-semibold">
                                             <span class="fs-6 text-gray-800 me-2">Max Smith</span>
@@ -2158,7 +2166,8 @@
                                     <a href="#"
                                         class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                         <div class="symbol symbol-35px symbol-circle me-5">
-                                            <img alt="Pic" src="{{asset('assets/media/avatars/300-5.jpg')}}" />
+                                            <img alt="Pic"
+                                                src="{{ asset('assets/media/avatars/300-5.jpg') }}" />
                                         </div>
                                         <div class="fw-semibold">
                                             <span class="fs-6 text-gray-800 me-2">Sean Bean</span>
@@ -2168,7 +2177,8 @@
                                     <a href="#"
                                         class="d-flex align-items-center p-3 rounded bg-state-light bg-state-opacity-50 mb-1">
                                         <div class="symbol symbol-35px symbol-circle me-5">
-                                            <img alt="Pic" src="{{asset('assets/media/avatars/300-25.jpg')}}" />
+                                            <img alt="Pic"
+                                                src="{{ asset('assets/media/avatars/300-25.jpg') }}" />
                                         </div>
                                         <div class="fw-semibold">
                                             <span class="fs-6 text-gray-800 me-2">Brian Cox</span>
@@ -2187,7 +2197,8 @@
                                                     value="0" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-6.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-6.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2242,7 +2253,8 @@
                                                     value="2" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-1.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-1.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2269,7 +2281,8 @@
                                                     value="3" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-5.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-5.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2296,7 +2309,8 @@
                                                     value="4" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-25.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-25.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2351,7 +2365,8 @@
                                                     value="6" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-9.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-9.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2434,7 +2449,8 @@
                                                     value="9" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-23.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-23.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2489,7 +2505,8 @@
                                                     value="11" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-12.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-12.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2544,7 +2561,8 @@
                                                     value="13" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-13.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-13.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2599,7 +2617,8 @@
                                                     value="15" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-21.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-21.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2626,7 +2645,8 @@
                                                     value="16" />
                                             </label>
                                             <div class="symbol symbol-35px symbol-circle">
-                                                <img alt="Pic" src="{{asset('assets/media/avatars/300-5.jpg')}}" />
+                                                <img alt="Pic"
+                                                    src="{{ asset('assets/media/avatars/300-5.jpg') }}" />
                                             </div>
                                             <div class="ms-5">
                                                 <a href="#"
@@ -2659,8 +2679,8 @@
                                     </div>
                                 </div>
                                 <div class="text-center px-5">
-                                    <img src="{{asset('assets/media/illustrations/sketchy-1/1.png')}}" alt=""
-                                        class="w-100 h-200px h-sm-325px" />
+                                    <img src="{{ asset('assets/media/illustrations/sketchy-1/1.png') }}"
+                                        alt="" class="w-100 h-200px h-sm-325px" />
                                 </div>
                             </div>
                         </div>
@@ -2694,7 +2714,7 @@
                         </div>
                     </div>
                     <div class="btn btn-light-primary fw-bold w-100 mb-8">
-                        <img alt="Logo" src="{{asset('assets/media/svg/brand-logos/google-icon.svg')}}"
+                        <img alt="Logo" src="{{ asset('assets/media/svg/brand-logos/google-icon.svg') }}"
                             class="h-20px me-3" />Invite Gmail Contacts
                     </div>
                     <div class="separator d-flex flex-center mb-8">
@@ -2707,7 +2727,7 @@
                             <div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-6.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-6.jpg') }}" />
                                     </div>
                                     <div class="ms-5">
                                         <a href="#"
@@ -2747,7 +2767,7 @@
                             <div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-1.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-1.jpg') }}" />
                                     </div>
                                     <div class="ms-5">
                                         <a href="#"
@@ -2767,7 +2787,7 @@
                             <div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-5.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-5.jpg') }}" />
                                     </div>
                                     <div class="ms-5">
                                         <a href="#"
@@ -2787,7 +2807,7 @@
                             <div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-25.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-25.jpg') }}" />
                                     </div>
                                     <div class="ms-5">
                                         <a href="#"
@@ -2828,7 +2848,7 @@
                             <div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-9.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-9.jpg') }}" />
                                     </div>
                                     <div class="ms-5">
                                         <a href="#"
@@ -2889,7 +2909,7 @@
                             <div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-23.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-23.jpg') }}" />
                                     </div>
                                     <div class="ms-5">
                                         <a href="#"
@@ -2929,7 +2949,7 @@
                             <div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-12.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-12.jpg') }}" />
                                     </div>
                                     <div class="ms-5">
                                         <a href="#"
@@ -2969,7 +2989,7 @@
                             <div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-13.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-13.jpg') }}" />
                                     </div>
                                     <div class="ms-5">
                                         <a href="#"
@@ -3009,7 +3029,7 @@
                             <div class="d-flex flex-stack py-4 border-bottom border-gray-300 border-bottom-dashed">
                                 <div class="d-flex align-items-center">
                                     <div class="symbol symbol-35px symbol-circle">
-                                        <img alt="Pic" src="{{asset('assets/media/avatars/300-21.jpg')}}" />
+                                        <img alt="Pic" src="{{ asset('assets/media/avatars/300-21.jpg') }}" />
                                     </div>
                                     <div class="ms-5">
                                         <a href="#"
@@ -3064,8 +3084,8 @@
             </div>
         </div>
     </div>
-    @include('layouts.toast')
     @include('layouts.script')
     @yield('jsSection')
 </body>
+
 </html>
