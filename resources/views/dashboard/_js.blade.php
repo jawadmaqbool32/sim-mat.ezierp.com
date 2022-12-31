@@ -53,7 +53,7 @@
                     data-unit-price="${product.unit_price}" 
                     data-purchase-price="${product.purchase_price}">
                     ${product.name}
-                    </option`;
+                    </option>`;
             }
 
 
