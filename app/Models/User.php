@@ -99,6 +99,18 @@ class User extends Authenticatable
             ->make(true);
     }
 
+    public function orders()
+    {
+        return $this->hasManyThrough(
+            Order::class,
+            OrderUser::class,
+            'user_id',
+            'id',
+            'id',
+            'order_id',
+        );
+    }
+
 
 
     /**

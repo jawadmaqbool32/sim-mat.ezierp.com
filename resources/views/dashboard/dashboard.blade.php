@@ -12,8 +12,10 @@
                     ]" />
                 </div>
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
-                    <a href="../apps/ecommerce/sales/listing.html"
-                        class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Manage Sales</a>
+                    @can('place order')
+                        <a data-bs-target="#place_order_modal" data-bs-toggle="modal"
+                            class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Place Order</a>
+                    @endcan
                     @can('add stock')
                         <a data-bs-target="#add_stock_modal" data-bs-toggle="modal" class="btn btn-sm fw-bold btn-primary">Add
                             Stock</a>
@@ -2031,8 +2033,8 @@
         </div>
     </div>
     <x-add-stock-modal />
+    <x-place-order-modal />
 @endsection
 @section('jsSection')
     @include('dashboard._js');
 @endsection
-

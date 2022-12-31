@@ -43,78 +43,9 @@ class StockController extends Controller
      */
     public function store(Request $request)
     {
-
         DB::beginTransaction();
         try {
-
-            if ($request->product == false || sizeof($request->product) == 0) {
-                throw new CustomException('Select some products first', 'error');
-            } else {
-                $total_amount = 0;
-                $last_transaction_key = 0;
-                $date = date('Y-m-d');
-                $voucher_type = VoucherType::where('short', 'APV')->first();
-                $liability_account = AccountLevel4::where('id', 5)->first();
-                $inventory_account = AccountLevel4::where('id', 4)->first();
-                $voucher_no = $voucher_type->short . '-' . $voucher_type->vouchers->count() + 1;
-                $voucher = Voucher::create([
-                    'voucher_no' => $voucher_no,
-                    'date' => $date,
-                    'voucher_type_id' => $voucher_type->id,
-                    'amount' => 0,
-                    'type' => 'multiple',
-                    'description' => 'New Stock Added',
-                    'created_by' => auth()->user()->id
-                ]);
-                $voucher->refresh();
-                foreach ($request->product as $key => $product) {
-                    $last_transaction_key++;
-                    $quantity = $request->quantity[$key];
-                    $purchase = $request->purchase[$key];
-                    $retail = $request->retail[$key];
-                    $product = Product::where('uid', $product)->first();
-                    $amount = $quantity * $purchase;
-                    Transaction::create([
-                        'transaction_no' => $voucher_no . '-' . $last_transaction_key,
-                        'voucher_id' => $voucher->id,
-                        'account_id' =>  $inventory_account->id,
-                        'amount' => $amount,
-                        'type' => 'debit',
-                        'source' => 'stock added to inventory',
-                        'description' => $product->name . 'x' . $quantity . ' added to inventory',
-                    ]);
-                    Product::where('uid', $product->uid)->update([
-                        'unit_price' => $retail,
-                        'purchase_price' => $purchase,
-                        'stock' => $product->stock + $quantity,
-                    ]);
-                    StockHistory::create([
-                        'product_id' => $product->id,
-                        'voucher_id' => $voucher->id,
-                        'quantity' => $quantity,
-                        'purchase' => $purchase,
-                        'retail' => $retail,
-                    ]);
-                    $total_amount += $amount;
-                }
-                $last_transaction_key++;
-                Transaction::create([
-                    'transaction_no' => $voucher_no . '-' . $last_transaction_key,
-                    'voucher_id' => $voucher->id,
-                    'account_id' =>  $liability_account->id,
-                    'amount' => $total_amount,
-                    'type' => 'credit',
-                    'source' => 'stock added to inventory',
-                    'description' => 'Liability for new stock',
-                ]);
-                AccountLevel4::where('id', $liability_account->id)->update([
-                    'balance' => $liability_account->balance + $total_amount,
-                ]);
-                AccountLevel4::where('id', $inventory_account->id)->update([
-                    'balance' => $inventory_account->balance + $total_amount,
-                ]);
-            }
-
+            $this->addStock($request->all());
             DB::commit();
             return response([
                 'success' => true,
@@ -129,7 +60,6 @@ class StockController extends Controller
             ]);
         } catch (Exception $e) {
             DB::rollBack();
-            dd($e);
             return response([
                 'error' => true,
                 'message' => 'Something went wrong',
@@ -181,5 +111,80 @@ class StockController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+
+    public function addStock($params)
+    {
+        if ($params["product"] == false || sizeof($params["product"]) == 0) {
+            throw new CustomException('Select some products first', 'error');
+        } else {
+            $total_amount = 0;
+            $last_transaction_key = 0;
+            $date = date('Y-m-d');
+            $voucher_type = VoucherType::where('short', 'APV')->first();
+            $liability_account = AccountLevel4::where('id', 5)->first();
+            $inventory_account = AccountLevel4::where('id', 4)->first();
+            $voucher_no = $voucher_type->short . '-' . $voucher_type->vouchers->count() + 1;
+            $voucher = Voucher::create([
+                'voucher_no' => $voucher_no,
+                'date' => $date,
+                'voucher_type_id' => $voucher_type->id,
+                'amount' => 0,
+                'type' => 'multiple',
+                'description' => 'New Stock Added',
+                'created_by' => auth()->user()->id
+            ]);
+            $voucher->refresh();
+            foreach ($params["product"] as $key => $product) {
+                $last_transaction_key++;
+                $quantity = $params["quantity"][$key];
+                $purchase = $params["purchase"][$key];
+                $retail = $params["retail"][$key];
+                $product = Product::where('uid', $product)->first();
+                $amount = $quantity * $purchase;
+                Transaction::create([
+                    'transaction_no' => $voucher_no . '-' . $last_transaction_key,
+                    'voucher_id' => $voucher->id,
+                    'account_id' =>  $inventory_account->id,
+                    'amount' => $amount,
+                    'type' => 'debit',
+                    'source' => 'stock added to inventory',
+                    'description' => $product->name . 'x' . $quantity . ' added to inventory',
+                ]);
+                Product::where('uid', $product->uid)->update([
+                    'unit_price' => $retail,
+                    'purchase_price' => $purchase,
+                    'stock' => $product->stock + $quantity,
+                ]);
+                StockHistory::create([
+                    'product_id' => $product->id,
+                    'voucher_id' => $voucher->id,
+                    'quantity' => $quantity,
+                    'purchase' => $purchase,
+                    'retail' => $retail,
+                ]);
+                $total_amount += $amount;
+            }
+            $last_transaction_key++;
+            Transaction::create([
+                'transaction_no' => $voucher_no . '-' . $last_transaction_key,
+                'voucher_id' => $voucher->id,
+                'account_id' =>  $liability_account->id,
+                'amount' => $total_amount,
+                'type' => 'credit',
+                'source' => 'stock added to inventory',
+                'description' => 'Liability for new stock',
+            ]);
+            AccountLevel4::where('id', $liability_account->id)->update([
+                'balance' => $liability_account->balance + $total_amount,
+            ]);
+            AccountLevel4::where('id', $inventory_account->id)->update([
+                'balance' => $inventory_account->balance + $total_amount,
+            ]);
+            Voucher::where('id', $voucher->id)->update([
+                'amount' => $total_amount
+            ]);
+        }
     }
 }

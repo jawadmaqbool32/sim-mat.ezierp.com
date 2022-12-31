@@ -88,4 +88,16 @@ class Product extends UIDModel
             'category_id',
         );
     }
+
+    public function orders()
+    {
+        return $this->hasManyThrough(
+            Order::class,
+            OrderProduct::class,
+            'product_id',
+            'id',
+            'id',
+            'order_id',
+        );
+    }
 }

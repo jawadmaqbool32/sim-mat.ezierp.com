@@ -10,7 +10,7 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         if ($request->ajax()) {
-            $products = Product::select('uid', 'name', 'purchase_price', 'unit_price')->get();
+            $products = Product::select('uid', 'name', 'purchase_price', 'unit_price', 'stock')->get();
             return response([
                 'products' => $products,
                 'success' => true

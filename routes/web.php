@@ -36,6 +36,7 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         Route::resource('permissions', PermissionController::class);
         Route::resource('voucher-types', VoucherTypeController::class);
         Route::resource('stock', StockController::class);
+        Route::resource('orders', OrderController::class);
 
         Route::group(['prefix' => 'accounts'], function () {
             Route::get('/', 'AccountController@index');
