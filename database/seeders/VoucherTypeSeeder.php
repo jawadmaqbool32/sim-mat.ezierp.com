@@ -17,7 +17,7 @@ class VoucherTypeSeeder extends Seeder
         $voucherTypes = [
             [
                 "short" => "BRV",
-                "Bank Receipt Voucher",
+                "name" => "Bank Receipt Voucher",
                 "credit_level" => "level4",
                 "debit_level" => "level4",
                 "debit_id" => 1,
@@ -26,7 +26,7 @@ class VoucherTypeSeeder extends Seeder
             ],
             [
                 "short" => "CRV",
-                "Cash Receipt Voucher",
+                "name" => "Cash Receipt Voucher",
                 "credit_level" => "level4",
                 "debit_level" => "level4",
                 "debit_id" => 2,
