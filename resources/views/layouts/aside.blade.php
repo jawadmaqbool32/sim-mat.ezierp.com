@@ -100,6 +100,17 @@
                                         ],
                                     ],
                                 ],
+                                [
+                                    'name' => 'Invoices',
+                                    'icon' => 'bi bi-receipt-cutoff',
+                                    'links' => [
+                                        [
+                                            'title' => 'Invoices',
+                                            'permission' => '',
+                                            'link' => route('orders.index'),
+                                        ],
+                                    ],
+                                ],
                             ],
                         ],
                     ];
