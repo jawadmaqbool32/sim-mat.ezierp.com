@@ -27,7 +27,7 @@ class CreateAccountLevel4sTable extends Migration
             $table->uuid('uid');
             $table->foreign('parent_id')
                 ->references('id')
-                ->on('account_level2s')
+                ->on('account_level3s')
                 ->onDelete('cascade')
                 ->onUpdate('cascade');
         });
