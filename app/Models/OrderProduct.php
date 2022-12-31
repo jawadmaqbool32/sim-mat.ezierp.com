@@ -12,10 +12,10 @@ class OrderProduct extends Model
 
     public function product()
     {
-        $this->hasOne(Product::class, 'id', 'product_id');
+        return $this->hasOne(Product::class, 'id', 'product_id');
     }
     public function order()
     {
-        $this->hasOne(Order::class, 'id', 'order_id');
+        return $this->hasOne(Order::class, 'id', 'order_id');
     }
 }

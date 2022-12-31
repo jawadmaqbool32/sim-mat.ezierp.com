@@ -45,6 +45,7 @@ class RolePermissionSeeder extends Seeder
             'create voucher',
             'edit voucher',
             'delete voucher',
+            'place order',
             'add stock'
         ];
         $roles = [

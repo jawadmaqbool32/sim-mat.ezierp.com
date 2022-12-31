@@ -42,4 +42,11 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
             Route::get('/', 'AccountController@index');
         });
     });
+
+    Route::group(['prefix' => 'print'], function () {
+        Route::get('/invoice/{id}', [
+            'uses' => "OrderController@print",
+            'as' => "invoice.print"
+        ]);
+    });
 });

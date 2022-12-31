@@ -22,9 +22,12 @@ class OrderController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            return Order::dataTable();
+        }
+        return view('orders.index');
     }
 
     /**
@@ -140,10 +143,9 @@ class OrderController extends Controller
                 'description' => 'On store invoice generated',
                 'created_by' => auth()->user()->id
             ]);
-            $total_orders = Order::count();
             $voucher->refresh();
             $order =  Order::create([
-                'order_no' => $voucher_no . '-' . $total_orders,
+                'order_no' => $voucher_no,
                 'status' => 'generated',
                 'date' => $date,
                 'due_date' => $due,
@@ -228,5 +230,11 @@ class OrderController extends Controller
                 'amount' => $revenue_amount
             ]);
         }
+    }
+
+    public function print($id)
+    {
+        $order = Order::where('uid', $id)->first();
+        return view('orders.print', compact('order'));
     }
 }
