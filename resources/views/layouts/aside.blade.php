@@ -101,12 +101,12 @@
                                     ],
                                 ],
                                 [
-                                    'name' => 'Invoices',
-                                    'icon' => 'bi bi-receipt-cutoff',
+                                    'name' => 'Orders',
+                                    'icon' => 'bi bi-cart',
                                     'links' => [
                                         [
-                                            'title' => 'Invoices',
-                                            'permission' => '',
+                                            'title' => 'Orders',
+                                            'permission' => 'view order',
                                             'link' => route('orders.index'),
                                         ],
                                     ],

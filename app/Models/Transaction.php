@@ -14,4 +14,9 @@ class Transaction extends Model
     {
         return $this->hasMany(Voucher::class, 'id', 'voucher_id');
     }
+
+    public function account()
+    {
+        return $this->hasOne(AccountLevel4::class, 'id', 'account_id');
+    }
 }

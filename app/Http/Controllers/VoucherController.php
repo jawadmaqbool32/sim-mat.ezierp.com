@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\AccountLevel4;
+use App\Models\Transaction;
 use App\Models\Voucher;
 use Illuminate\Http\Request;
 
@@ -12,6 +14,40 @@ class VoucherController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+    protected $voucher;
+    protected $rules = [
+        'Asset' => [
+            'debit' => '+',
+            'credit' => '-'
+        ],
+        'Liability' => [
+            'debit' => '-',
+            'credit' => '+'
+        ],
+        'Equity' => [
+            'debit' => '-',
+            'credit' => '+'
+        ],
+        'Revenue' => [
+            'debit' => '-',
+            'credit' => '+'
+        ],
+        'Expense' => [
+            'debit' => '+',
+            'credit' => '-'
+        ]
+    ];
+
+    public function  getOperation($account, $type)
+    {
+        return $this->rules[$account->name][$type];
+    }
+    public function __construct($voucher)
+    {
+        $this->voucher = $voucher;
+    }
+
     public function index()
     {
         //
@@ -81,5 +117,30 @@ class VoucherController extends Controller
     public function destroy(Voucher $voucher)
     {
         //
+    }
+
+
+    public function voidVoucher()
+    {
+        $voucher = $this->voucher;
+        foreach ($voucher->transactions as $transaction) {
+            $account = $transaction->account;
+            $level1 = $account->level3->level2->level1;
+            $operation = $this->getOperation($level1, $transaction->type);
+            //Void works in reverse
+            if ($operation == '+') {
+                AccountLevel4::where('id', $account->id)->update([
+                    'balance' => $account->balance - $transaction->amount
+                ]);
+            } elseif ($operation == '-') {
+                AccountLevel4::where('id', $account->id)->update([
+                    'balance' => $account->balance + $transaction->amount
+                ]);
+            }
+        }
+        Voucher::where('id', $voucher->id)->update([
+            'type' => 'void'
+        ]);
+        return true;
     }
 }

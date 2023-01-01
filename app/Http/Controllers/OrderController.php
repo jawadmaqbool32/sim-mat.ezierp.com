@@ -237,4 +237,43 @@ class OrderController extends Controller
         $order = Order::where('uid', $id)->first();
         return view('orders.print', compact('order'));
     }
+
+    public function cancel($id)
+    {
+        DB::beginTransaction();
+        try {
+            $order = Order::where('uid', $id)->with('invVoucher')->first();
+            $voucher = $order->invVoucher;
+            $voucherController = new VoucherController($voucher);
+            $voucherController->voidVoucher();
+            foreach ($order->orderProducts as $orderProduct) {
+                $product = $orderProduct->product;
+                Product::where('id', $product->id)->update([
+                    'stock' => $product->stock + $orderProduct->quantity
+                ]);
+            }
+            Order::where('id', $order->id)->update([
+                'status' => 'cancelled'
+            ]);
+            DB::commit();
+            return response([
+                'success' => true,
+                'table_reload' => true,
+                'message' => 'Order reverted',
+            ]);
+        } catch (CustomException $e) {
+            DB::rollBack();
+            return response([
+                $e->getLevel() => true,
+                'message' => $e->getMessage(),
+            ]);
+        } catch (Exception $e) {
+            DB::rollBack();
+            return response([
+                'error' => true,
+                'message' => 'Something went wrong',
+                'console' => $e->getMessage(),
+            ]);
+        }
+    }
 }

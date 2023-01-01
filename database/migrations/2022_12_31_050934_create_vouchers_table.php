@@ -21,7 +21,8 @@ class CreateVouchersTable extends Migration
             $table->double('amount')->default(0);
             $table->enum('type', [
                 'single',
-                'multiple'
+                'multiple',
+                'void'
             ])->default('single');
             $table->text('description')->nullable();
             $table->unsignedInteger('created_by');

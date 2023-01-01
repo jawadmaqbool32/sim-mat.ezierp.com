@@ -10,7 +10,7 @@
 
 <script>
     $(document).ready(function() {
-       
+        
 
         function formatAMPM(date) {
             var hours = date.getHours();

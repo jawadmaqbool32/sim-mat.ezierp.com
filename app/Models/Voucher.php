@@ -17,6 +17,8 @@ class Voucher extends UIDModel
 
     public function transactions()
     {
-        return $this->hasMany(Transaction::class, 'voucher_id', 'id ');
+        return $this->hasMany(Transaction::class, 'voucher_id', 'id');
     }
+
+    
 }

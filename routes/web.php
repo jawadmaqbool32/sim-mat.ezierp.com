@@ -29,6 +29,8 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
             'uses' => "HomeController@index",
             'as' => "dashboard"
         ]);
+
+        // Resources
         Route::resource('categories', CategoryController::class);
         Route::resource('products', ProductController::class);
         Route::resource('users', UserController::class);
@@ -38,15 +40,23 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         Route::resource('stock', StockController::class);
         Route::resource('orders', OrderController::class);
 
+
+        //Groups
         Route::group(['prefix' => 'accounts'], function () {
             Route::get('/', 'AccountController@index');
         });
+        Route::group(['prefix' => 'order'], function () {
+            Route::post('cancel/{id}', "OrderController@cancel")->name('order.cancel');
+        });
     });
 
+
+
+    //Print Routes
     Route::group(['prefix' => 'print'], function () {
-        Route::get('/invoice/{id}', [
+        Route::get('/order/{id}', [
             'uses' => "OrderController@print",
-            'as' => "invoice.print"
+            'as' => "order.print"
         ]);
     });
 });

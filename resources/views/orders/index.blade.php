@@ -57,6 +57,7 @@
             </div>
         </div>
     </div>
+    <x-cancel-order-modal />
 @endsection
 
 @section('jsSection')

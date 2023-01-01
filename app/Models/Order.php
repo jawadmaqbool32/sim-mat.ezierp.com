@@ -21,6 +21,11 @@ class Order extends UIDModel
         return $this->hasMany(OrderUser::class, 'order_id', 'id');
     }
 
+    public function invVoucher()
+    {
+        return $this->hasOne(Voucher::class, 'id', 'inv_voucher_id');
+    }
+
     public function products()
     {
         return $this->hasManyThrough(
@@ -69,11 +74,21 @@ class Order extends UIDModel
             })
             ->addColumn('action', function ($order) {
                 $btns = [];
-                $btns[] = '<a href="' . route('invoice.print', $order->uid) . '"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
+
+                $btns[] = '<a  href="' . route('order.print', $order->uid) . '" data-bs-toggle="tooltip" tabindex="0" title="Print Invoice"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
             <span class="svg-icon svg-icon-3">
             <i class="fonticon-printer fs-3"></i>
             </span>
         </a>';
+                if (auth()->user()->hasPermission('cancel order') && $order->status == 'generated') {
+
+                    $btns[] = '<a href="#" data-modal_id="' . $order->id . '" data-modal_name="' . $order->order_no . '"  data-bs-toggle="modal" data-bs-target="#cancel_order_modal" data-bs-toggle="tooltip" tabindex="0" title="Cancel Order" data-base-url="' . route('order.cancel', $order->uid) . '"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
+            <span class="svg-icon svg-icon-3">
+            <i class="bi bi-arrow-counterclockwise"></i>
+            </span>
+        </a>';
+                }
+
                 if (count($btns)) {
                     return implode($btns);
                 } else {
