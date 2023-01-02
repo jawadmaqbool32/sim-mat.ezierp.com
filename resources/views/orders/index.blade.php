@@ -57,7 +57,15 @@
             </div>
         </div>
     </div>
-    <x-cancel-order-modal />
+    @can('cancel order')
+        <x-cancel-order-modal />
+    @endcan
+    @can('mark paid')
+        <x-mark-paid-order-modal />
+    @endcan
+    @can('order refund')
+        <x-order-refund-modal />
+    @endcan
 @endsection
 
 @section('jsSection')

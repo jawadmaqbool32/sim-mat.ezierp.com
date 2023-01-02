@@ -53,11 +53,16 @@
                     <thead>
                         <tr>
                             <th class="p-2 mt-15" colspan="5">
-                                <h3 class="">INVOICE <span class="float-end">
-                                        @php
-                                            $generator = new Picqer\Barcode\BarcodeGeneratorHTML();
-                                        @endphp
-                                        {!! $generator->getBarcode($order->order_no, $generator::TYPE_CODE_128) !!}
+                                <h3 class="">INVOICE
+                                    <span
+                                        class="
+                                    @if ($order->status == 'paid') text-success
+                                    @elseif($order->status == 'pending')
+                                    text-warning
+                                    @else
+                                    text-danger @endif
+                                    float-end">
+                                        {{ strToUpper($order->status) }}
                                     </span>
                                 </h3>
                             </th>

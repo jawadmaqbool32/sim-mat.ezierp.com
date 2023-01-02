@@ -49,6 +49,8 @@ class RolePermissionSeeder extends Seeder
             'add stock',
             'view order',
             'cancel order',
+            'mark paid',
+            'order refund',
         ];
         $roles = [
             'superadmin'

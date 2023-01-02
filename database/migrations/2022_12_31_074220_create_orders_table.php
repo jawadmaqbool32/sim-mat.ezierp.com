@@ -21,7 +21,8 @@ class CreateOrdersTable extends Migration
             $table->enum('status', [
                 'generated',
                 'cancelled',
-                'paid'
+                'paid',
+                'refunded',
             ]);
             $table->date('date');
             $table->date('due_date');

@@ -47,6 +47,8 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         });
         Route::group(['prefix' => 'order'], function () {
             Route::post('cancel/{id}', "OrderController@cancel")->name('order.cancel');
+            Route::post('mark/paid/{id}', "OrderController@markPaid")->name('order.mark.paid');
+            Route::post('order/refund/{id}', "OrderController@refund")->name('order.refund');
         });
     });
 

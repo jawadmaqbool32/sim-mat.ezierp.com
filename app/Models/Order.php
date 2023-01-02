@@ -25,6 +25,11 @@ class Order extends UIDModel
     {
         return $this->hasOne(Voucher::class, 'id', 'inv_voucher_id');
     }
+    
+    public function payVoucher()
+    {
+        return $this->hasOne(Voucher::class, 'id', 'pay_voucher_id');
+    }
 
     public function products()
     {
@@ -85,6 +90,24 @@ class Order extends UIDModel
                     $btns[] = '<a href="#" data-modal_id="' . $order->id . '" data-modal_name="' . $order->order_no . '"  data-bs-toggle="modal" data-bs-target="#cancel_order_modal" data-bs-toggle="tooltip" tabindex="0" title="Cancel Order" data-base-url="' . route('order.cancel', $order->uid) . '"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
             <span class="svg-icon svg-icon-3">
             <i class="bi bi-arrow-counterclockwise"></i>
+            </span>
+        </a>';
+                }
+
+                if (auth()->user()->hasPermission('mark paid') && $order->status == 'generated') {
+
+                    $btns[] = '<a href="#" data-modal_id="' . $order->id . '" data-modal_name="' . $order->order_no . '"  data-bs-toggle="modal" data-bs-target="#mark_paid_order_modal" data-bs-toggle="tooltip" tabindex="0" title="Mark Paid" data-base-url="' . route('order.mark.paid', $order->uid) . '"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
+            <span class="svg-icon svg-icon-3">
+            <i class="bi bi-check"></i>
+            </span>
+        </a>';
+                }
+
+                if (auth()->user()->hasPermission('order refund') && $order->status == 'paid') {
+
+                    $btns[] = '<a href="#" data-modal_id="' . $order->id . '" data-modal_name="' . $order->order_no . '"  data-bs-toggle="modal" data-bs-target="#refund_order_modal" data-bs-toggle="tooltip" tabindex="0" title="Order Refund" data-base-url="' . route('order.refund', $order->uid) . '"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
+            <span class="svg-icon svg-icon-3">
+            <i class="bi bi-box-arrow-left"></i>
             </span>
         </a>';
                 }

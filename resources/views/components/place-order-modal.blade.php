@@ -40,6 +40,15 @@
                                 </tr>
                             </table>
                         </div>
+                        <div class="col-md-12">
+                            <div class="form-check form-switch form-check-custom form-check-solid">
+                                <input name="isPaid" class="form-check-input" type="checkbox" value="true"
+                                    id="isSwitchPaid" >
+                                <label class="form-check-label" for="isSwitchPaid">
+                                    Mark Paid
+                                </label>
+                            </div>
+                        </div>
                     </div>
                     <div class="text-center">
                         <button type="reset" id="place_order_modal_cancel" data-bs-dismiss="modal"
