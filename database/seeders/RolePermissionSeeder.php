@@ -69,7 +69,8 @@ class RolePermissionSeeder extends Seeder
         }
         foreach ($roles as $role) {
             Role::create([
-                'name' => $role
+                'name' => $role,
+                'status' => 'active'
             ]);
         }
         UserRole::create([

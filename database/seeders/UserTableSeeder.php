@@ -20,6 +20,7 @@ class UserTableSeeder extends Seeder
             'name' => 'Testing',
             'uid' => Helper::_uid(),
             'email' => 'admin@gmail.com',
+            'status' => 'active',
             'password' => Hash::make('12345678'),
         ]);
         $super_admin->save();
