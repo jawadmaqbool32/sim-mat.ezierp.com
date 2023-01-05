@@ -31,6 +31,7 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         ]);
 
         // Resources
+        Route::resource('file', FileContentController::class);
         Route::resource('categories', CategoryController::class);
         Route::resource('products', ProductController::class);
         Route::resource('users', UserController::class);

@@ -2,11 +2,10 @@
     data-kt-drawer-activate="{default: true, lg: false}" data-kt-drawer-overlay="true" data-kt-drawer-width="225px"
     data-kt-drawer-direction="start" data-kt-drawer-toggle="#kt_app_sidebar_mobile_toggle">
     <div class="app-sidebar-logo px-6" id="kt_app_sidebar_logo">
-        <a href="../index.html">
-            <img alt="Logo" src="{{ asset('assets/media/logos/default-dark.svg') }}"
-                class="h-25px app-sidebar-logo-default" />
-            <img alt="Logo" src="{{ asset('assets/media/logos/default-small.svg') }}"
-                class="h-20px app-sidebar-logo-minimize" />
+        <a href="{{ route('dashboard') }}">
+            <h1 class="text-secondary mt-2">
+                MAT-SIM
+            </h1>
         </a>
         <div id="kt_app_sidebar_toggle"
             class="app-sidebar-toggle btn btn-icon btn-shadow btn-sm btn-color-muted btn-active-color-primary body-bg h-30px w-30px position-absolute top-50 start-100 translate-middle rotate"
@@ -58,22 +57,6 @@
                             'title' => 'Pages',
                             'categories' => [
                                 [
-                                    'name' => 'Inventory',
-                                    'icon' => 'bi bi-shop',
-                                    'links' => [
-                                        [
-                                            'title' => 'Categories',
-                                            'permission' => 'view category',
-                                            'link' => route('categories.index'),
-                                        ],
-                                        [
-                                            'title' => 'Products',
-                                            'permission' => 'view product',
-                                            'link' => route('products.index'),
-                                        ],
-                                    ],
-                                ],
-                                [
                                     'name' => 'Access Control',
                                     'icon' => 'bi bi-lock',
                                     'links' => [
@@ -97,44 +80,6 @@
                                             'title' => 'User',
                                             'permission' => 'view user',
                                             'link' => route('users.index'),
-                                        ],
-                                    ],
-                                ],
-                                [
-                                    'name' => 'Orders',
-                                    'icon' => 'bi bi-cart',
-                                    'links' => [
-                                        [
-                                            'title' => 'Orders',
-                                            'permission' => 'view order',
-                                            'link' => route('orders.index'),
-                                        ],
-                                    ],
-                                ],
-                                [
-                                    'name' => 'Reports',
-                                    'icon' => 'bi bi-file-earmark-bar-graph',
-                                    'links' => [
-                                        [
-                                            'title' => 'Stocks',
-                                            'permission' => 'view stocks',
-                                            'link' => route('stocks.index'),
-                                        ],
-                                        [
-                                            'title' => 'Sales',
-                                            'permission' => 'view sales',
-                                            'link' => route('sales.index'),
-                                        ],
-                                    ],
-                                ],
-                                [
-                                    'name' => 'HR',
-                                    'icon' => 'bi bi-person-bounding-box',
-                                    'links' => [
-                                        [
-                                            'title' => 'Employees',
-                                            'permission' => 'view employees',
-                                            'link' => route('employees.index'),
                                         ],
                                     ],
                                 ],

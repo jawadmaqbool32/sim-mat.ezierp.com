@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Login | adorablekids.pk</title>
+    <title>Login | SIM MAT</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter:300,400,500,600,700" />
     @include('layouts.style')
@@ -62,9 +62,9 @@
             <div class="d-flex flex-center w-lg-50 pt-15 pt-lg-0 px-10">
                 <div class="d-flex flex-center flex-lg-start flex-column">
                     <a  class="mb-7">
-                        <img alt="Logo" src="{{asset('assets/media/logos/custom-3.svg')}}" />
+                        <h1 class="fs-1 fw-bolder text-white">SIM MAT</h1>
+                        {{-- <img alt="Logo" src="{{asset('assets/media/logos/custom-3.svg')}}" /> --}}
                     </a>
-                    <h2 class="text-white fw-normal m-0">Branding tools designed for your business</h2>
                 </div>
             </div>
             <div class="d-flex flex-center w-lg-50 p-10">

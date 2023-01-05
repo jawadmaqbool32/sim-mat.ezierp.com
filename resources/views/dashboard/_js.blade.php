@@ -1,92 +1,46 @@
 <script>
-    $(document).ready(function() {
+    $(document).on('submit', '#fileUploader', function(e) {
+        e.preventDefault();
+        var selector = $(this).find('button[type="submit"]');
+        let url = $(this).prop('action');
+        let method = $(this).prop('method') ?? 'GET';
+        let _token = "{{ csrf_token() }}"
+        var formData = new FormData($(this)[0]);
+        formData.append('_token', _token);
 
-        var products = {};
-        getCharts();
-
-
-        function profitChart(series) {
-            var revenueWrapper = series[0] ? series[0] : 0;
-            var expenseWrapper = series[1] ? series[1] : 0;
-            $('#revenue_wrapper').text(revenueWrapper);
-            $('#expense_wrapper').text(expenseWrapper);
-            $('#profit_wrapper').text(revenueWrapper - expenseWrapper);
-            new ApexCharts(document.querySelector("#profit_chart"), {
-                series: series,
-                chart: {
-                    width: 200,
-                    type: 'donut',
-                    toolbar: {
-                        show: false
-                    },
-
-
-                },
-                labels: ['Revenue', 'Expense'],
-                legend: {
-                    show: false
-                },
-                colors: ['#009ef7', '#f1416c'],
-                dataLabels: {
-                    enabled: false
-                },
-            }).render();
-        }
-
-        $(document).on('click', '.btn-add-stock, .btn-place-order', function() {
-            $('#add_stock_modal #product_wrapper').empty();
-            $('#place_order_modal #product_wrapper').empty();
-            getInitialParams();
-        });
-
-        function getInitialParams() {
-            $.ajax({
-                url: window.location.href,
-                method: "GET",
-                success: function(response) {
-                    if (response.success) {
-                        products = response.products;
-                    }
-                },
-                error: function(response) {
-                    toastr.error(
-                        response.message,
-                        "Error", {
-                            timeOut: 5000,
-                            extendedTimeOut: 0,
-                            closeButton: true,
-                            closeDuration: 0
+        $.ajax({
+            url: url,
+            data: formData,
+            type: method,
+            processData: false,
+            cache: false,
+            contentType: false,
+            success: function(response) {
+                if (response.success) {
+                    let i = 1;
+                    $('#keywords').empty();
+                    for (const key in response.keywords) {
+                        if (Object.hasOwnProperty.call(response.keywords, key)) {
+                            const element = response.keywords[key];
+                            $('#keywords').append(
+                                `<tr><td>${i}</td><td>${key.toUpperCase()}</td><td>${element}</td></tr>`
+                            );
                         }
-                    );
-
-                },
-                complete: function() {
-                    addStockRow(true);
-                    addOrderRow(true);
-                }
-            });
-        }
-
-        function getCharts() {
-            $.ajax({
-                url: window.location.href + "?charts=true",
-                method: "GET",
-                success: function(response) {
-                    if (response.success) {
-                        profitChart(response.profit);
+                        i++;
                     }
-                },
-                complete: function() {}
-            });
-        }
+                    $("#text_area").html(response.text)
+                }
 
-        @include('dashboard.add_stock_js')
-        @include('dashboard.place_order_js')
-
-        document.addEventListener("table_reload", function() {
-            $('#add_stock_modal_cancel').click();
-            $('#place_order_modal_cancel').click();
+            },
+            error: function(response) {
+                toast({
+                    title: "Failed",
+                    type: "danger",
+                    time: cTime,
+                    body: response.message,
+                    icon: "<i class='bi bi-x fs-2x text-danger'></i>"
+                });
+            }
         });
-
     });
 </script>
