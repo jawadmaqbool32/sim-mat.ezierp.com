@@ -111,6 +111,33 @@
                                         ],
                                     ],
                                 ],
+                                [
+                                    'name' => 'Reports',
+                                    'icon' => 'bi bi-file-earmark-bar-graph',
+                                    'links' => [
+                                        [
+                                            'title' => 'Stocks',
+                                            'permission' => 'view stocks',
+                                            'link' => route('stocks.index'),
+                                        ],
+                                        [
+                                            'title' => 'Sales',
+                                            'permission' => 'view sales',
+                                            'link' => route('sales.index'),
+                                        ],
+                                    ],
+                                ],
+                                [
+                                    'name' => 'HR',
+                                    'icon' => 'bi bi-person-bounding-box',
+                                    'links' => [
+                                        [
+                                            'title' => 'Employees',
+                                            'permission' => 'view employees',
+                                            'link' => route('employees.index'),
+                                        ],
+                                    ],
+                                ],
                             ],
                         ],
                     ];

@@ -15,7 +15,7 @@
                 </div>
             </div>
             <div class="modal-body px-10 px-lg-15 pt-0 pb-15" id="dropdown_parent">
-                <form data-ajax="true" id="kt_modal_new_target_form" class="form" action="{{ route('stock.store') }}"
+                <form data-ajax="true" id="kt_modal_new_target_form" class="form" action="{{ route('stocks.store') }}"
                     method="POST">
                     <div class="mb-13 text-center">
                         <h1 class="mb-3">Add Stocks</h1>

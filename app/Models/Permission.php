@@ -55,9 +55,4 @@ class Permission extends UIDModel
             ->rawColumns(['action'])
             ->make(true);
     }
-
-    
-
-
-    
 }

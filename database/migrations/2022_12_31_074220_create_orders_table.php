@@ -24,6 +24,7 @@ class CreateOrdersTable extends Migration
                 'paid',
                 'refunded',
             ]);
+            $table->unsignedInteger('amount')->default(0);
             $table->date('date');
             $table->date('due_date');
             $table->uuid('uid');

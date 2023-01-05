@@ -25,11 +25,13 @@ class Order extends UIDModel
     {
         return $this->hasOne(Voucher::class, 'id', 'inv_voucher_id');
     }
-    
+
     public function payVoucher()
     {
         return $this->hasOne(Voucher::class, 'id', 'pay_voucher_id');
     }
+
+
 
     public function products()
     {
@@ -111,6 +113,33 @@ class Order extends UIDModel
             </span>
         </a>';
                 }
+
+                if (count($btns)) {
+                    return implode($btns);
+                } else {
+                    return null;
+                }
+            })
+            ->rawColumns(['action', 'status'])
+            ->make(true);
+    }
+    public  function scopeSalesTable($query)
+    {
+        $orders = $query;
+        return DataTables::of($orders)
+            ->addIndexColumn()
+            ->editColumn('date', function ($order) {
+                return date('d M, Y', strtotime($order->date));
+            })
+            ->addColumn('action', function ($order) {
+                $btns = [];
+
+                $btns[] = '<a  href="' . route('order.print', $order->uid) . '" data-bs-toggle="tooltip" tabindex="0" title="Print Invoice"  class="mx-1 float-end btn btn-icon btn-bg-light btn-active-color-primary btn-sm modal-button">
+            <span class="svg-icon svg-icon-3">
+            <i class="fonticon-printer fs-3"></i>
+            </span>
+        </a>';
+
 
                 if (count($btns)) {
                     return implode($btns);

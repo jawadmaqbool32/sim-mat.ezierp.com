@@ -29,6 +29,10 @@ class RolePermissionSeeder extends Seeder
             'create user',
             'edit user',
             'delete user',
+            'view employee',
+            'create employee',
+            'edit employee',
+            'delete employee',
             'view product',
             'create product',
             'edit product',
@@ -51,9 +55,12 @@ class RolePermissionSeeder extends Seeder
             'cancel order',
             'mark paid',
             'order refund',
+            'view stocks',
+            'view sales',
         ];
         $roles = [
-            'superadmin'
+            'superadmin',
+            'employee',
         ];
         foreach ($permissions as $permission) {
             Permission::create([

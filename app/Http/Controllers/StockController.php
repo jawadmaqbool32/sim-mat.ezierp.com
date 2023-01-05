@@ -12,6 +12,7 @@ use App\Models\VoucherType;
 use Exception;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Yajra\DataTables\Facades\DataTables;
 
 class StockController extends Controller
 {
@@ -20,9 +21,26 @@ class StockController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(Request $request)
     {
-        //
+        if ($request->ajax()) {
+            $table = new Product();
+            if ($request->status) {
+                switch ($request->status) {
+                    case 'in_stock':
+                        $table = $table->where('stock', '>=', 10);
+                        break;
+                    case 'out_of_stock':
+                        $table = $table->where('stock', '=', 0);
+                        break;
+                    case 'low_stock':
+                        $table = $table->where('stock', '<', 10)->where('stock', '>', 0);
+                        break;
+                }
+            }
+            return $table->stockTable();
+        }
+        return view('reports.stocks.index');
     }
 
     /**
@@ -186,5 +204,29 @@ class StockController extends Controller
                 'amount' => $total_amount
             ]);
         }
+    }
+
+    public function print($type)
+    {
+        $products = new Product();
+        $status = "Available Stock";
+        if ($type) {
+            switch ($type) {
+                case 'in_stock':
+                    $products = $products->where('stock', '>=', 10);
+                    $status = "In stock";
+                    break;
+                case 'out_of_stock':
+                    $products = $products->where('stock', '=', 0);
+                    $status = "Out of stock";
+                    break;
+                case 'low_stock':
+                    $products = $products->where('stock', '<', 10)->where('stock', '>', 0);
+                    $status = "Low Stock";
+                    break;
+            }
+        }
+        $products = $products->get();
+        return view('reports.stocks.print', compact('products', 'status'));
     }
 }

@@ -181,7 +181,7 @@ class OrderController extends Controller
             OrderProduct::create([
                 'product_id' => $product->id,
                 'order_id' => $order->id,
-                'price' => $amount,
+                'price' => $price,
                 'quantity' => $quantity,
             ]);
             $revenue_amount += $amount;
@@ -231,6 +231,9 @@ class OrderController extends Controller
             'balance' => $expense_account->balance + $expense_amount,
         ]);
         Voucher::where('id', $voucher->id)->update([
+            'amount' => $revenue_amount
+        ]);
+        Order::where('id', $order->id)->update([
             'amount' => $revenue_amount
         ]);
         return $order->refresh();
@@ -292,11 +295,7 @@ class OrderController extends Controller
         $recievable_account = AccountLevel4::where('id', 3)->first();
         $office_account = AccountLevel4::where('id', 2)->first();
         $date = Carbon::now()->format('Y-m-d');
-        $total_amount =  0;
-        foreach ($order->orderProducts as $orderProduct) {
-            $amount = $orderProduct->price * $orderProduct->quantity;
-            $total_amount += $amount;
-        }
+        $total_amount =  $order->amount;
         if ($total_amount) {
             $voucher_type = VoucherType::where('short', 'CRV')->first();
             $voucher_no = $voucher_type->short . '-' . $voucher_type->vouchers->count() + 1;

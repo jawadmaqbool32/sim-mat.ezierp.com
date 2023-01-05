@@ -77,6 +77,39 @@ class Product extends UIDModel
             ->make(true);
     }
 
+    public function scopeStockTable($query)
+    {
+        $products = $query;
+        return DataTables::of($products)
+            ->addIndexColumn()
+            ->editColumn('thumbnail', function ($product) {
+                if (!$product->thumbnail) {
+                    return "Image not available";
+                }
+                return  '<div class="d-flex align-items-center">
+                <div class="symbol symbol-45px me-5">
+                    <img alt="thumbnail" src="' . asset("assets/media/products/thumbs/" . $product->thumbnail) . '">
+                </div>
+            </div>';
+            })
+            ->editColumn('stock', function ($product) {
+                $html = '';
+                if ($product->stock == 0) {
+                    $html = '<span class="badge py-3 px-4 fs-7 badge-light-danger">Out of Stock</span>';
+                } elseif ($product->stock < 10) {
+                    $html = '<span class="badge py-3 px-4 fs-7 badge-light-warning">Low Stock</span>';
+                } else {
+                    $html = '<span class="badge py-3 px-4 fs-7 badge-light-primary">In Stock</span>';
+                }
+                return $html;
+            })
+            ->addColumn('quantity', function ($product) {
+                return $product->stock . ' PCS';
+            })
+            ->rawColumns(['stock'])
+            ->make(true);
+    }
+
     public function categories()
     {
         return $this->hasManyThrough(

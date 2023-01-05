@@ -34,10 +34,12 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         Route::resource('categories', CategoryController::class);
         Route::resource('products', ProductController::class);
         Route::resource('users', UserController::class);
+        Route::resource('employees', EmployeeController::class);
         Route::resource('roles', RoleController::class);
         Route::resource('permissions', PermissionController::class);
         Route::resource('voucher-types', VoucherTypeController::class);
-        Route::resource('stock', StockController::class);
+        Route::resource('stocks', StockController::class);
+        Route::resource('sales', SaleController::class);
         Route::resource('orders', OrderController::class);
 
 
@@ -59,6 +61,14 @@ Route::group(['namespace' => '\App\Http\Controllers'], function () {
         Route::get('/order/{id}', [
             'uses' => "OrderController@print",
             'as' => "order.print"
+        ]);
+        Route::get('/stock/{type}', [
+            'uses' => "StockController@print",
+            'as' => "print.stock"
+        ]);
+        Route::get('/sales/{from}/{to}', [
+            'uses' => "SaleController@print",
+            'as' => "print.sales"
         ]);
     });
 });

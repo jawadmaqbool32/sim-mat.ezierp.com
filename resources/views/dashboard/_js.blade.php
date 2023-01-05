@@ -2,7 +2,42 @@
     $(document).ready(function() {
 
         var products = {};
-        getInitialParams();
+        getCharts();
+
+
+        function profitChart(series) {
+            var revenueWrapper = series[0] ? series[0] : 0;
+            var expenseWrapper = series[1] ? series[1] : 0;
+            $('#revenue_wrapper').text(revenueWrapper);
+            $('#expense_wrapper').text(expenseWrapper);
+            $('#profit_wrapper').text(revenueWrapper - expenseWrapper);
+            new ApexCharts(document.querySelector("#profit_chart"), {
+                series: series,
+                chart: {
+                    width: 200,
+                    type: 'donut',
+                    toolbar: {
+                        show: false
+                    },
+
+
+                },
+                labels: ['Revenue', 'Expense'],
+                legend: {
+                    show: false
+                },
+                colors: ['#009ef7', '#f1416c'],
+                dataLabels: {
+                    enabled: false
+                },
+            }).render();
+        }
+
+        $(document).on('click', '.btn-add-stock, .btn-place-order', function() {
+            $('#add_stock_modal #product_wrapper').empty();
+            $('#place_order_modal #product_wrapper').empty();
+            getInitialParams();
+        });
 
         function getInitialParams() {
             $.ajax({
@@ -29,6 +64,19 @@
                     addStockRow(true);
                     addOrderRow(true);
                 }
+            });
+        }
+
+        function getCharts() {
+            $.ajax({
+                url: window.location.href + "?charts=true",
+                method: "GET",
+                success: function(response) {
+                    if (response.success) {
+                        profitChart(response.profit);
+                    }
+                },
+                complete: function() {}
             });
         }
 

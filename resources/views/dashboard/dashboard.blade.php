@@ -14,10 +14,12 @@
                 <div class="d-flex align-items-center gap-2 gap-lg-3">
                     @can('place order')
                         <a data-bs-target="#place_order_modal" data-bs-toggle="modal"
-                            class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary">Place Order</a>
+                            class="btn btn-sm fw-bold bg-body btn-color-gray-700 btn-active-color-primary btn-place-order">Place
+                            Order</a>
                     @endcan
                     @can('add stock')
-                        <a data-bs-target="#add_stock_modal" data-bs-toggle="modal" class="btn btn-sm fw-bold btn-primary">Add
+                        <a data-bs-target="#add_stock_modal" data-bs-toggle="modal"
+                            class="btn btn-sm fw-bold btn-primary btn-add-stock">Add
                             Stock</a>
                     @endcan
                     @can('create product')
@@ -35,9 +37,9 @@
                             <div class="card-header pt-5">
                                 <div class="card-title d-flex flex-column">
                                     <div class="d-flex align-items-center">
-                                        <span class="fs-4 fw-semibold text-gray-400 me-1 align-self-start">$</span>
-                                        <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2">69,700</span>
-                                        <span class="badge badge-light-success fs-base">
+                                        <span class="fs-4 fw-semibold text-gray-400 me-1 align-self-start"></span>
+                                        <span class="fs-2hx fw-bold text-dark me-2 lh-1 ls-n2" id="profit_wrapper">0</span>
+                                        {{-- <span class="badge badge-light-success fs-base">
                                             <span class="svg-icon svg-icon-5 svg-icon-success ms-n1">
                                                 <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
                                                     xmlns="http://www.w3.org/2000/svg">
@@ -49,33 +51,27 @@
                                                         fill="currentColor" />
                                                 </svg>
                                             </span>
-                                        </span>
+                                        </span> --}}
                                     </div>
-                                    <span class="text-gray-400 pt-1 fw-semibold fs-6">Expected Earnings</span>
+                                    <span class="text-gray-400 pt-1 fw-semibold fs-6">Today Profit</span>
                                 </div>
                             </div>
                             <div class="card-body pt-2 pb-4 d-flex align-items-center">
                                 <div class="d-flex flex-center me-5 pt-2">
-                                    <div id="kt_card_widget_4_chart" style="min-width: 70px; min-height: 70px"
-                                        data-kt-size="70" data-kt-line="11"></div>
+                                    <div id="profit_chart" style="min-width: 70px; min-height: 70px"></div>
                                 </div>
                                 <div class="d-flex flex-column content-justify-center w-100">
                                     <div class="d-flex fs-6 fw-semibold align-items-center">
                                         <div class="bullet w-8px h-6px rounded-2 bg-danger me-3"></div>
-                                        <div class="text-gray-500 flex-grow-1 me-4">Shoes</div>
-                                        <div class="fw-bolder text-gray-700 text-xxl-end">$7,660</div>
+                                        <div class="text-gray-500 flex-grow-1 me-4">Purchase</div>
+                                        <div class="fw-bolder text-gray-700 text-xxl-end" id="expense_wrapper">0</div>
                                     </div>
                                     <div class="d-flex fs-6 fw-semibold align-items-center my-3">
                                         <div class="bullet w-8px h-6px rounded-2 bg-primary me-3"></div>
-                                        <div class="text-gray-500 flex-grow-1 me-4">Gaming</div>
-                                        <div class="fw-bolder text-gray-700 text-xxl-end">$2,820</div>
+                                        <div class="text-gray-500 flex-grow-1 me-4">Revenue</div>
+                                        <div class="fw-bolder text-gray-700 text-xxl-end" id="revenue_wrapper">0</div>
                                     </div>
-                                    <div class="d-flex fs-6 fw-semibold align-items-center">
-                                        <div class="bullet w-8px h-6px rounded-2 me-3" style="background-color: #E4E6EF">
-                                        </div>
-                                        <div class="text-gray-500 flex-grow-1 me-4">Others</div>
-                                        <div class="fw-bolder text-gray-700 text-xxl-end">$45,257</div>
-                                    </div>
+
                                 </div>
                             </div>
                         </div>
