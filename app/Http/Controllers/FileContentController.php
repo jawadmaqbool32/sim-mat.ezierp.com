@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Smalot\PdfParser\Parser;
+use Spatie\PdfToText\Pdf;
 
 class FileContentController extends Controller
 {
