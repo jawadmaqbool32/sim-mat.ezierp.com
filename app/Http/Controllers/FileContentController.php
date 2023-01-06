@@ -1216,9 +1216,9 @@ class FileContentController extends Controller
         if (sizeof($keywords) > 0) {
             foreach ($keywords as $keyword) {
                 $keyword = trim(strtolower($keyword));
-                // if (@$this->ignore[$keyword]) {
-                //     continue;
-                // }
+                if (@$this->ignore[$keyword]) {
+                    continue;
+                }
                 if (@$keywordObj[$keyword]) {
                     $keywordObj[$keyword] = $keywordObj[$keyword] + 1;
                 } else {
@@ -1237,7 +1237,7 @@ class FileContentController extends Controller
             // $headers = ['Content-Type' => 'text/csv'];
             // return response()->download($filename, $filename, $headers)->deleteFileAfterSend();
             arsort($keywordObj);
-            // $keywordObj = array_slice($keywordObj, 0, 10);
+            $keywordObj = array_slice($keywordObj, 0, 10);
             return response([
                 'success' => true,
                 'keywords' => $keywordObj,
