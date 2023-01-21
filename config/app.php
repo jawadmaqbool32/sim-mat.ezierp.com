@@ -166,7 +166,7 @@ return [
         /*
          * Package Service Providers...
          */
-
+        InfyOm\GeneratorBuilder\GeneratorBuilderServiceProvider::class,
         /*
          * Application Service Providers...
          */
@@ -234,6 +234,9 @@ return [
         'Image' => Intervention\Image\Facades\Image::class,
         'DNS1D' => Milon\Barcode\Facades\DNS1DFacade::class,
         'DNS2D' => Milon\Barcode\Facades\DNS2DFacade::class,
+        'Form'      => Collective\Html\FormFacade::class,
+        'Html'      => Collective\Html\HtmlFacade::class,
+        'Flash'     => Laracasts\Flash\Flash::class,
     ],
 
 ];

@@ -23,3 +23,6 @@ Route::resource('categories', App\Http\Controllers\API\CategoryAPIController::cl
 
 
 Route::resource('somes', App\Http\Controllers\API\SomeAPIController::class);
+
+
+Route::resource('mandatory_questions', App\Http\Controllers\API\MandatoryQuestionAPIController::class);
