@@ -88,3 +88,6 @@ Route::group(['prefix' => 'print'], function () {
 
 
 
+
+
+Route::resource('mandatoryQuestions', MandatoryQuestionController::class);

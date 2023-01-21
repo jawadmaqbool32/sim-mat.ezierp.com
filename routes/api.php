@@ -18,11 +18,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::resource('categories', App\Http\Controllers\API\CategoryAPIController::class);
-
-
-Route::resource('somes', App\Http\Controllers\API\SomeAPIController::class);
-
-
-Route::resource('mandatory_questions', App\Http\Controllers\API\MandatoryQuestionAPIController::class);
+// Route::resource('mandatory_questions', MandatoryQuestionAPIController::class);
