@@ -65,6 +65,7 @@ class MandatoryQuestionDataTable extends DataTable
     protected function getColumns()
     {
         return [
+            'id',
             'name',
             // 'type'
         ];
