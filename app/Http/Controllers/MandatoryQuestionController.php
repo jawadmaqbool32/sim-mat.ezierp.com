@@ -149,4 +149,11 @@ class MandatoryQuestionController extends AppBaseController
 
         return redirect(route('mandatoryQuestions.index'));
     }
+
+    public function preview(MandatoryQuestionDataTable $mandatoryQuestionDataTable)
+    {
+
+        return $mandatoryQuestionDataTable->render('mandatory_questions.preview');
+
+    }
 }

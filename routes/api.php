@@ -18,4 +18,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-// Route::resource('mandatory_questions', MandatoryQuestionAPIController::class);
+// Route::resource('mandatory_questions', API\MandatoryQuestionAPIController::class);
+
+
+// Route::resource('area_of_interests', API\AreaOfInterestAPIController::class);

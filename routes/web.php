@@ -57,7 +57,15 @@ Route::group(['middleware' => ['auth']], function () {
     Route::resource('stocks', StockController::class);
     Route::resource('sales', SaleController::class);
     Route::resource('orders', OrderController::class);
+    Route::get('/mandatoryQuestions/preview', [
+        'uses' => "MandatoryQuestionController@preview",
+        'as' => "mandatoryQuestions.preview",
+    ]);
     Route::resource('mandatoryQuestions', MandatoryQuestionController::class);
+    Route::resource('areaOfInterests', AreaOfInterestController::class);
+
+
+
 
     // //Groups
     // Route::group(['prefix' => 'accounts'], function () {
@@ -90,4 +98,5 @@ Route::group(['prefix' => 'print'], function () {
 
 
 
-Route::resource('mandatoryQuestions', MandatoryQuestionController::class);
+
+

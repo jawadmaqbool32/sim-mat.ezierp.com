@@ -6,24 +6,18 @@
             <div class="col-md-12">
                 <x-breadcrums :links="[
                     'Home' => route('dashboard'),
-                    'Mandatory Questions' => false,
+                    'Area Of Interests' => false,
                 ]" />
             </div>
         </div>
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-8">
-                    <h1>Mandatory Questions</h1>
+                <div class="col-sm-6">
+                    <h1>Area Of Interests</h1>
                 </div>
-                <div class="col-sm-2">
+                <div class="col-sm-6">
                     <a class="btn btn-sm btn-primary float-right" style="float:right;"
-                       href="{{ route('mandatoryQuestions.preview') }}">
-                        Preview
-                    </a>
-                </div>
-                <div class="col-sm-2">
-                    <a class="btn btn-sm btn-primary float-right" style="float:right;"
-                       href="{{ route('mandatoryQuestions.create') }}">
+                       href="{{ route('areaOfInterests.create') }}">
                         Add New
                     </a>
                 </div>
@@ -38,11 +32,11 @@
 
         <div class="card mb-5 mb-xl-8">
             <div class="card-body pt-3">
-                @include('mandatory_questions.table')
+                @include('area_of_interests.table')
 
                 <div class="card-footer clearfix">
                     <div class="float-right">
-
+                        
                     </div>
                 </div>
             </div>
