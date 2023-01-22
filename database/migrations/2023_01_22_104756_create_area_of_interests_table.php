@@ -17,8 +17,8 @@ class CreateAreaOfInterestsTable extends Migration
         Schema::create('area_of_interests', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->string('referent1');
-            $table->string('referent2');
+            $table->string('referent1')->nullable();
+            $table->string('referent2')->nullable();
             $table->integer('parent_id')->nullable();
             $table->timestamps();
         });
