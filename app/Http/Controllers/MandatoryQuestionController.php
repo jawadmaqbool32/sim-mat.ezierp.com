@@ -7,6 +7,8 @@ use App\Http\Requests;
 use App\Http\Requests\CreateMandatoryQuestionRequest;
 use App\Http\Requests\UpdateMandatoryQuestionRequest;
 use App\Repositories\MandatoryQuestionRepository;
+use App\Repositories\AreaOfInterestRepository;
+
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
@@ -16,9 +18,13 @@ class MandatoryQuestionController extends AppBaseController
     /** @var MandatoryQuestionRepository $mandatoryQuestionRepository*/
     private $mandatoryQuestionRepository;
 
-    public function __construct(MandatoryQuestionRepository $mandatoryQuestionRepo)
+    /** @var AreaOfInterestRepository $areaOfInterestRepository*/
+    private $areaOfInterestRepository;
+
+    public function __construct(MandatoryQuestionRepository $mandatoryQuestionRepo, AreaOfInterestRepository $areaOfInterestRepo)
     {
         $this->mandatoryQuestionRepository = $mandatoryQuestionRepo;
+        $this->areaOfInterestRepository = $areaOfInterestRepo;
     }
 
     /**
@@ -153,7 +159,13 @@ class MandatoryQuestionController extends AppBaseController
     public function preview(MandatoryQuestionDataTable $mandatoryQuestionDataTable)
     {
 
-        return $mandatoryQuestionDataTable->render('mandatory_questions.preview');
+        $mandatoryQuestion = $this->mandatoryQuestionRepository->all();
+        $areaOfInterest = $this->areaOfInterestRepository->all();
+        // $areaOfInterest = $areaOfInterest->pluck('name', 'id');
+        // $mandatoryQuestion = $mandatoryQuestion->where();
+
+
+        return view('mandatory_questions.preview')->with('mandatoryQuestion', $mandatoryQuestion)->with('areaOfInterest', $areaOfInterest);
 
     }
 }

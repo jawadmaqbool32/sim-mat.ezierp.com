@@ -21,7 +21,7 @@ class AreaOfInterest extends Model
 
 
     public $table = 'area_of_interests';
-    
+
 
 
 
@@ -54,5 +54,13 @@ class AreaOfInterest extends Model
         'name' => 'required'
     ];
 
-    
+    public function child()
+    {
+        return $this->hasMany(
+            AreaOfInterest::class,
+            'parent_id',
+            'id',
+        );
+    }
+
 }
