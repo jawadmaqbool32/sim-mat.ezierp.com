@@ -10,6 +10,7 @@ use App\Repositories\AreaOfInterestRepository;
 use Flash;
 use App\Http\Controllers\AppBaseController;
 use Response;
+use App\Models\User;
 
 class AreaOfInterestController extends AppBaseController
 {
@@ -40,10 +41,14 @@ class AreaOfInterestController extends AppBaseController
      */
     public function create()
     {
+        $users = User::whereHas('userRole', function($q){
+           return $q->where('role_id', 3);
+        })->pluck('name', 'id');
+
         $parent_id = $this->areaOfInterestRepository->all();
         $parent_id = $parent_id->where('parent_id', Null)->pluck('name', 'id');
 
-        return view('area_of_interests.create')->with('parent_id', $parent_id);
+        return view('area_of_interests.create')->with('parent_id', $parent_id)->with('users', $users);
     }
 
     /**
@@ -98,13 +103,18 @@ class AreaOfInterestController extends AppBaseController
         $parent_id = $this->areaOfInterestRepository->all();
         $parent_id = $parent_id->where('parent_id', Null)->pluck('name', 'id');
 
+        $users = User::whereHas('userRole', function($q){
+            return $q->where('role_id', 3);
+         })->pluck('name', 'id');
+
+
         if (empty($areaOfInterest)) {
             Flash::error('Area Of Interest not found');
 
             return redirect(route('areaOfInterests.index'));
         }
 
-        return view('area_of_interests.edit')->with('areaOfInterest', $areaOfInterest)->with('parent_id', $parent_id);
+        return view('area_of_interests.edit')->with('areaOfInterest', $areaOfInterest)->with('parent_id', $parent_id)->with('users', $users);
     }
 
     /**

@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Models;
-
+use App\Models\User;
 use Eloquent as Model;
 
 
@@ -60,6 +60,22 @@ class AreaOfInterest extends Model
             AreaOfInterest::class,
             'parent_id',
             'id',
+        );
+    }
+    public function user1()
+    {
+        return $this->hasOne(
+            User::class,
+            'id',
+            'referent1',
+        );
+    }
+    public function user2()
+    {
+        return $this->hasOne(
+            User::class,
+            'id',
+            'referent2',
         );
     }
 

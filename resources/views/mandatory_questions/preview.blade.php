@@ -35,8 +35,6 @@
                                     @endif
                                 @endforeach
                             </select>
-
-                            {{-- {!! Form::select('parent_id', $areaOfInterest,  Null ,  ['placeholder' => 'Select interesse', 'class' => 'form-control custom-select']) !!} --}}
                         </div>
                     @else
                         <div class="col-md-10 col-sm-10 ">

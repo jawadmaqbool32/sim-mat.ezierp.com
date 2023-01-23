@@ -18,7 +18,32 @@ class AreaOfInterestDataTable extends DataTable
     {
         $dataTable = new EloquentDataTable($query);
 
-        return $dataTable->addColumn('action', 'area_of_interests.datatables_actions');
+        $columns = $this->getColumns();
+        $dataTable = $dataTable
+        ->editColumn('id', function ($interest) {
+            return  $interest->id;
+        })
+        ->editColumn('name', function ($interest) {
+
+            return $interest->name;
+        })
+        ->editColumn('referent1', function ($interest) {
+            if ($interest->user1) {
+                return $interest->user1->name;
+            }else{
+            return '';
+            }
+        })
+        ->editColumn('referent2', function ($interest) {
+            if ($interest->user2) {
+                return $interest->user2->name;
+            }else{
+            return '';
+            }
+        })
+        ->addColumn('action', 'area_of_interests.datatables_actions');
+
+        return $dataTable;
     }
 
     /**

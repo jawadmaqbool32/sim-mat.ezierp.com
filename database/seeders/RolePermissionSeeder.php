@@ -61,6 +61,7 @@ class RolePermissionSeeder extends Seeder
         $roles = [
             'superadmin',
             'employee',
+            'reference',
         ];
         foreach ($permissions as $permission) {
             Permission::create([
@@ -76,6 +77,30 @@ class RolePermissionSeeder extends Seeder
         UserRole::create([
             'user_id' => 1,
             'role_id' => 1
+        ]);
+        UserRole::create([
+            'user_id' => 2,
+            'role_id' => 2
+        ]);
+        UserRole::create([
+            'user_id' => 3,
+            'role_id' => 3
+        ]);
+        UserRole::create([
+            'user_id' => 4,
+            'role_id' => 3
+        ]);
+        UserRole::create([
+            'user_id' => 5,
+            'role_id' => 3
+        ]);
+        UserRole::create([
+            'user_id' => 6,
+            'role_id' => 3
+        ]);
+        UserRole::create([
+            'user_id' => 7,
+            'role_id' => 3
         ]);
     }
 }

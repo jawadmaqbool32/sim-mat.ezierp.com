@@ -18,7 +18,7 @@ class MandatoryQuestionRepository extends BaseRepository
      */
     protected $fieldSearchable = [
         'name',
-        'type'
+        // 'type'
     ];
 
     /**

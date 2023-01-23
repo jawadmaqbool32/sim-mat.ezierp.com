@@ -22,7 +22,7 @@
                     </a>
                 </div>
                 <div class="col-sm-2">
-                    <a class="btn btn-sm btn-primary float-right" style="float:right;"
+                    <a class="btn btn-sm btn-primary float-right" style="float:right; "
                        href="{{ route('mandatoryQuestions.create') }}">
                         Add New
                     </a>
@@ -38,11 +38,11 @@
 
         <div class="card mb-5 mb-xl-8">
             <div class="card-body pt-3">
+                <div class="table-responsive">
                 @include('mandatory_questions.table')
-
+                </div>
                 <div class="card-footer clearfix">
                     <div class="float-right">
-
                     </div>
                 </div>
             </div>
