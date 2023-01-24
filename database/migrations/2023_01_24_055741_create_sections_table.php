@@ -4,8 +4,9 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateReferencesTable extends Migration
+class CreateSectionsTable extends Migration
 {
+
     /**
      * Run the migrations.
      *
@@ -13,10 +14,9 @@ class CreateReferencesTable extends Migration
      */
     public function up()
     {
-        Schema::create('references', function (Blueprint $table) {
-            $table->id();
+        Schema::create('sections', function (Blueprint $table) {
+            $table->increments('id');
             $table->string('name');
-            $table->string('initial');
             $table->timestamps();
         });
     }
@@ -28,6 +28,6 @@ class CreateReferencesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('references');
+        Schema::drop('sections');
     }
 }

@@ -100,3 +100,6 @@ Route::group(['prefix' => 'print'], function () {
 
 
 
+
+
+Route::resource('sections', SectionController::class);
