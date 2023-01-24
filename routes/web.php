@@ -63,7 +63,8 @@ Route::group(['middleware' => ['auth']], function () {
     ]);
     Route::resource('mandatoryQuestions', MandatoryQuestionController::class);
     Route::resource('areaOfInterests', AreaOfInterestController::class);
-
+    Route::resource('sections', SectionController::class);
+    Route::resource('questions', QuestionController::class);
 
 
 
@@ -101,8 +102,3 @@ Route::group(['prefix' => 'print'], function () {
 
 
 
-
-Route::resource('sections', SectionController::class);
-
-
-Route::resource('questions', QuestionController::class);

@@ -20,9 +20,9 @@ class CreateQuestionsTable extends Migration
             $table->text('question');
             $table->integer('score');
             $table->smallInteger('correct_answer');
-            $table->text('third_option');
-            $table->smallInteger('show_third_for');
-            $table->smallInteger('third_option_is');
+            $table->text('third_option')->nullable();
+            $table->smallInteger('show_third_for')->nullable();
+            $table->smallInteger('third_option_is')->nullable();
             $table->timestamps();
         });
     }
