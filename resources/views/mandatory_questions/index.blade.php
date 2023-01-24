@@ -12,19 +12,21 @@
         </div>
         <div class="container-fluid">
             <div class="row mb-2">
-                <div class="col-sm-8">
+                <div class="col-sm-6">
                     <h1>Mandatory Questions</h1>
                 </div>
-                <div class="col-sm-2">
-                    <a class="btn btn-sm btn-primary float-right" style="float:right;"
+                <div class="col-sm-6">
+                    <a class="btn btn-sm btn-primary float-right" style="float:right; margin-left:8px;"
+                       href="{{ route('mandatoryQuestions.create') }}">
+                        Add New
+                    </a>
+                    <a class="btn btn-sm btn-primary float-right" style="float:right;margin-left:8px;"
                        href="{{ route('mandatoryQuestions.preview') }}">
                         Preview
                     </a>
-                </div>
-                <div class="col-sm-2">
-                    <a class="btn btn-sm btn-primary float-right" style="float:right; "
-                       href="{{ route('mandatoryQuestions.create') }}">
-                        Add New
+                    <a class="btn btn-sm btn-primary float-right" style="float:right;margin-left:8px;"
+                       href="{{ route('areaOfInterests.index') }}">
+                       Area Of Interests
                     </a>
                 </div>
             </div>
