@@ -24,4 +24,7 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 // Route::resource('area_of_interests', API\AreaOfInterestAPIController::class);
 
 
-// Route::resource('sections', App\Http\Controllers\API\SectionAPIController::class);
+Route::resource('sections', API\SectionAPIController::class);
+
+
+Route::resource('questions', API\QuestionAPIController::class);

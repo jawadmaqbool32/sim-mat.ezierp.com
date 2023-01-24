@@ -103,3 +103,6 @@ Route::group(['prefix' => 'print'], function () {
 
 
 Route::resource('sections', SectionController::class);
+
+
+Route::resource('questions', QuestionController::class);
