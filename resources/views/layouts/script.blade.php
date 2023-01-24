@@ -10,7 +10,7 @@
 
 <script>
     $(document).ready(function() {
-        
+
 
         function formatAMPM(date) {
             var hours = date.getHours();
@@ -147,5 +147,7 @@
                 }
             }
         });
+
+        $(document).ready(function() { $(".select2").select2(); });
     });
 </script>
